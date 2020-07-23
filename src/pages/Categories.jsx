@@ -1,7 +1,10 @@
 import React from 'react'
 import { Switch, Route, useRouteMatch, useParams } from 'react-router-dom'
+import algoliasearch from 'algoliasearch/lite'
+import { InstantSearch, Configure, SearchBox, InfiniteHits } from 'react-instantsearch-dom'
 
 const Category = () => {
+  const searchClient = algoliasearch('H2YGA5NBNG', '26b1badfb8cb68a219e300f7cd17df1e')
   var { categoryName, order } = useParams()
   return (
     <>
@@ -10,6 +13,13 @@ const Category = () => {
       ) : (
         <h3>requested category {categoryName}</h3>
       )}
+
+      <InstantSearch searchClient={searchClient} indexName='demo_ecommerce'>
+        <Configure filters={'brand:' + categoryName} />
+        <SearchBox />
+        <InfiniteHits />
+      </InstantSearch>
+
     </>
   )
 }

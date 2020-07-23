@@ -9,7 +9,7 @@ import News from './pages/News'
 import Categories from './pages/Categories'
 
 const App = () => {
-  var categories = ['cat1', 'catego2', 'cate3']
+  var categories = ['Apple', 'Samsung', 'Incipio', 'OtterBox']
 
   return (
     <BrowserRouter>
