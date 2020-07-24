@@ -1,7 +1,7 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faUser, faShoppingCart, faDiceD20 } from '@fortawesome/free-solid-svg-icons'
 
 class Header extends React.Component {
   render (_props) {
@@ -13,8 +13,8 @@ class Header extends React.Component {
     return (
       <header>
         <div className='header'>
-          <h1>Bienvenue sur mon application React !</h1>
-          <nav className='headerNav'>
+          <Link exact to='/'><FontAwesomeIcon icon={faDiceD20} /><h1>slicedice</h1></Link>
+          <nav>
             <ul>
               <li>
                 <NavLink to='/recherche'><FontAwesomeIcon icon={faSearch} /><p>recherche</p></NavLink>

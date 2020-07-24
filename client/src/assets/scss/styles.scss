@@ -1,2 +1,23 @@
 @import "mixins";
 @import "fonts";
+
+@import "header";
+
+body{
+  margin: 0;
+  p{
+    margin: 0;
+  }
+  a{
+    text-decoration: none;
+    color: $green;
+    &:visited{
+      color: $yellow;
+    }
+  }
+
+  ul{
+    padding: 0;
+    margin: 0;
+  }
+}
