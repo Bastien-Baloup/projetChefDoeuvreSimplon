@@ -10,6 +10,23 @@ import Categories from './pages/Categories'
 
 const App = () => {
   var categories = ['Cell Phones', 'Cell Phones Accessories', 'Cell Phones Cases & Clips', 'iPhone Accessories']
+  var lastArticles = [
+    {
+      name: 'article1',
+      excerpt: 'lorem ipsum, dolor sit amet. Qui prom poquo et agnes solidare, deflagra ets. Sinsigram meni dolor.',
+      img: 'https://picsum.photos/id/0/300/400'
+    },
+    {
+      name: 'article2',
+      excerpt: 'lorem ipsum, dolor sit amet. Qui prom poquo et agnes solidare, deflagra ets. Sinsigram meni dolor.',
+      img: 'https://picsum.photos/id/160/300/400'
+    },
+    {
+      name: 'article3',
+      excerpt: 'lorem ipsum, dolor sit amet. Qui prom poquo et agnes solidare, deflagra ets. Sinsigram meni dolor.',
+      img: 'https://picsum.photos/id/119/300/400'
+    }
+  ]
 
   return (
     <BrowserRouter>
@@ -17,7 +34,13 @@ const App = () => {
 
       <main>
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route
+            exact path='/'
+            render={
+              (props) => (
+                <Home {...props} articles={lastArticles} />
+            )}
+          />
           <Route exact path='/actualites' component={News} />
           <Route path='/categorie' component={Categories} />
         </Switch>

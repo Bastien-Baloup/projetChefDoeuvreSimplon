@@ -1,5 +1,6 @@
 @import "variables";
 @import "mixins";
+@import "cards";
 
 header{
   .header{
@@ -33,7 +34,6 @@ header{
         color: $black
       }
       ul{
-        list-style-type: none;
         margin-right: 1rem;
         li{
           display: inline-block;
@@ -69,7 +69,6 @@ header{
     }
     font-weight: 600;
     ul{
-      list-style-type: none;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;

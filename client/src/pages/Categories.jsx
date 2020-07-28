@@ -3,9 +3,11 @@ import { Switch, Route, useRouteMatch, useParams } from 'react-router-dom'
 import algoliasearch from 'algoliasearch/lite'
 import { InstantSearch, Configure, SearchBox, InfiniteHits, SortBy } from 'react-instantsearch-dom'
 import Filters from '../components/Filters'
+import Card from '../components/Card'
 
 const Category = () => {
   const searchClient = algoliasearch('H2YGA5NBNG', '26b1badfb8cb68a219e300f7cd17df1e')
+  const Hit = ({ hit }) => <Card product={hit} />
   var { categoryName, order } = useParams()
   return (
     <>
@@ -27,7 +29,7 @@ const Category = () => {
           ]}
           defaultRefinement='popularity'
         />
-        <InfiniteHits />
+        <InfiniteHits hitComponent={Hit} />
       </InstantSearch>
 
     </>

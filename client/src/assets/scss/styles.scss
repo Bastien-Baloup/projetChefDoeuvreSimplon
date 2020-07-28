@@ -1,9 +1,12 @@
 @import "mixins";
 @import "fonts";
+@import "variables";
+
 
 @import "header";
 
 body{
+  background-color: $white;
   margin: 0;
   p{
     margin: 0;
@@ -17,7 +20,13 @@ body{
   }
 
   ul{
+    list-style-type: none;
     padding: 0;
     margin: 0;
+  }
+
+  .carouselContainer{
+    padding: 1rem;
+
   }
 }
