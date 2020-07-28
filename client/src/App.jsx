@@ -25,6 +25,21 @@ const App = () => {
       name: 'article3',
       excerpt: 'lorem ipsum, dolor sit amet. Qui prom poquo et agnes solidare, deflagra ets. Sinsigram meni dolor.',
       img: 'https://picsum.photos/id/119/300/400'
+    },
+    {
+      name: 'article4',
+      excerpt: 'lorem ipsum, dolor sit amet. Qui prom poquo et agnes solidare, deflagra ets. Sinsigram meni dolor.',
+      img: 'https://picsum.photos/id/120/300/400'
+    },
+    {
+      name: 'article5',
+      excerpt: 'lorem ipsum, dolor sit amet. Qui prom poquo et agnes solidare, deflagra ets. Sinsigram meni dolor.',
+      img: 'https://picsum.photos/id/130/300/400'
+    },
+    {
+      name: 'article6',
+      excerpt: 'lorem ipsum, dolor sit amet. Qui prom poquo et agnes solidare, deflagra ets. Sinsigram meni dolor.',
+      img: 'https://picsum.photos/id/161/300/400'
     }
   ]
 
