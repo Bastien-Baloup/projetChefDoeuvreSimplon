@@ -75,9 +75,11 @@ header{
       li{
         margin:.25rem;
         a{
+          color: $yellow;
           padding: 0 .25rem;
         }
         a.active{
+          color: $yellow;
           border-bottom: solid .1rem $yellow;
         }
       }

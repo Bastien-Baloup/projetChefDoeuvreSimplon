@@ -3,18 +3,21 @@ import { Link } from 'react-router-dom'
 
 class Card extends React.Component {
   render (_props) {
-    var { article, product } = this.props
+    var { article, product, inCarousel } = this.props
     if (product) {
-      product.sale = 0
       product.id = Math.round(Math.random() * 10)
-      var reducedPrice = product.price * (1 - (product.sale / 100))
+      if (product.sale) {
+        var reducedPrice = product.price * (1 - (product.sale / 100))
+      } else {
+        product.sale = 0
+      }
     }
     return (
-      <div className='card'>
+      <div className={inCarousel ? 'card inCarousel' : 'card'}>
         {product && (
           <div className='product'>
             <Link to={'/product/' + product.name} className='img'><img src={product.image} alt={'image du produit ' + product.name} /></Link>
-            <Link to={'/product/' + product.name}>{product.name}</Link>
+            <Link to={'/product/' + product.name} className='name'>{product.name}</Link>
             {(product.sale !== 0) ? (
               <>
                 <p className='oldPrice'>{product.price + '€'}</p>

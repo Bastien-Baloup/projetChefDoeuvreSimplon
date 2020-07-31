@@ -21,22 +21,39 @@ body{
     overflow: hidden;
     border-radius: .2rem;
 
+    &.inCarousel{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: initial;
+    }
 
     .product{
       padding: 1rem 1rem;
       height: 338px;
-      .price{
-        text-align: right;
-        color: $black;
-        font-size: 1.5rem;
+      p{
+        display: inline-block;
+        position: absolute;
+
+        &.oldPrice{
+          margin-top: .4rem;
+          right: 50%;
+          color: lighten( $black, 10% );
+          text-decoration: line-through;
+        }
+        &.price{
+          right: 1rem;
+          color: $black;
+          font-size: 1.5rem;
+        }
       }
       a{
+        display: block;
         color: $green;
         &:visited{
           color: saturate( $green, 50% );
         }
         &.img{
-          display: block;
           margin-left: auto;
           margin-right: auto;
           margin-bottom: 1rem;

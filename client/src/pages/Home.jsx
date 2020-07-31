@@ -1,35 +1,16 @@
 import React from 'react'
 import Card from '../components/Card'
-import AliceCarousel from 'react-alice-carousel'
+import Carousel from '../components/Carousel'
 
 const Home = (props) => {
   const handleOnDragStart = (e) => e.preventDefault()
-  var listArticles = props.articles.map(article => <Card article={article} key={article.id} onDragStart={handleOnDragStart} />)
+  var listArticles = props.articles.map(article => <Card article={article} key={article.id} onDragStart={handleOnDragStart} inCarousel />)
+  var listNew = props.new.map(product => <Card product={product} key={product.id} onDragStart={handleOnDragStart} inCarousel />)
   return (
     <>
       <h2>Accueil</h2>
-      <div className='carouselContainer'>
-        <AliceCarousel
-          mouseTrackingEnabled
-          responsive={
-            {
-              0: {
-                items: 1
-              },
-              768: {
-                items: 2
-              },
-              1024: {
-                items: 3
-              }
-            }
-          }
-          stagePadding={{ paddingLeft: 0, paddingRight: 0 }}
-          infinite={false}
-          items={listArticles}
-        />
-
-      </div>
+      <Carousel items={listArticles} />
+      <Carousel items={listNew} />
     </>
   )
 }
