@@ -4,6 +4,7 @@
 @import "../../../../../node_modules/react-alice-carousel/lib/scss/alice-carousel.scss";
 
 @import "header";
+@import "carousel";
 
 body{
   background-color: $white;
@@ -23,10 +24,5 @@ body{
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
-
-  .carouselContainer{
-    padding: 1rem;
-
   }
 }
