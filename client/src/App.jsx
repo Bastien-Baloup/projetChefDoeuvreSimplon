@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Header from './components/Header'
 import News from './pages/News'
 import Categories from './pages/Categories'
+import Search from './pages/Search'
 
 const App = () => {
   var categories = ['Cell Phones', 'Cell Phones Accessories', 'Cell Phones Cases & Clips', 'iPhone Accessories']
@@ -151,6 +152,7 @@ const App = () => {
           />
           <Route exact path='/actualites' component={News} />
           <Route path='/categorie' component={Categories} />
+          <Route path='/recherche' component={Search} />
         </Switch>
       </main>
     </BrowserRouter>
