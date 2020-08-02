@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
 import { Switch, Route, useRouteMatch, useParams } from 'react-router-dom'
 import algoliasearch from 'algoliasearch/lite'
-import { InstantSearch, Configure, SearchBox, InfiniteHits, SortBy, CurrentRefinements } from 'react-instantsearch-dom'
+import { InstantSearch, Configure, SearchBox, SortBy, CurrentRefinements } from 'react-instantsearch-dom'
 import Filters from '../components/Filters'
-import Card from '../components/Card'
+import MyInfiniteHits from '../components/InfiniteHits'
 
 const Category = () => {
   const searchClient = algoliasearch('H2YGA5NBNG', '26b1badfb8cb68a219e300f7cd17df1e')
-  const Hit = ({ hit }) => <Card product={hit} />
   const [searchState, setSearchState] = useState({})
   const [isModalOpen, setIsModalOpen] = useState(false)
   const onSearchStateChange = newSearchState => {
-    console.log('1')
     setSearchState(oldSearchState => { return { ...oldSearchState, ...newSearchState } })
-    console.log('2')
   }
   var { categoryName, order } = useParams()
   return (
@@ -42,7 +39,7 @@ const Category = () => {
         />
         <button onClick={() => setIsModalOpen(true)}>Filtrer</button>
         <CurrentRefinements />
-        <InfiniteHits hitComponent={Hit} />
+        <MyInfiniteHits />
 
         <Filters
           setIsOpen={setIsModalOpen}

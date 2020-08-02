@@ -1,8 +1,9 @@
 @import "variables";
+@import "mixins";
 
 body{
   
-  .ais-InfiniteHits ul{
+  .infiniteHits ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -10,7 +11,9 @@ body{
 
   .card{
     position: relative;
-    margin-right: 1rem;
+    @include responsive('s'){
+      margin-right: 1rem;
+    }
     margin-bottom: 1rem;
     display: inline-block;
 

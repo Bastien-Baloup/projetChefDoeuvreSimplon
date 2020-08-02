@@ -1,6 +1,10 @@
 @mixin responsive($device) {
   @if $device == xs {
-    @media (max-width: 767px) {
+    @media (max-width: 559px) {
+      @content;
+    }
+  } @else if $device == s {
+    @media (min-width: 560px) {
       @content;
     }
   } @else if $device == sm {
