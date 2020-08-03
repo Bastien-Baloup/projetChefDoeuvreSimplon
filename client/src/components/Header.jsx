@@ -6,13 +6,13 @@ import { faSearch, faUser, faShoppingCart, faDiceD20 } from '@fortawesome/free-s
 const Header = ({ categories }) => {
   var listCategories = categories.map(category =>
     <li key={category.id}>
-      <NavLink to={'/categorie/' + category}>{category}</NavLink>
+      <NavLink to={'/categorie/' + category.name}>{category.name}</NavLink>
     </li>
   )
   return (
     <header>
       <div className='header'>
-        <Link exact to='/'><FontAwesomeIcon icon={faDiceD20} /><h1>slicedice</h1></Link>
+        <Link to='/'><FontAwesomeIcon icon={faDiceD20} /><h1>slicedice</h1></Link>
         <nav>
           <ul>
             <li>

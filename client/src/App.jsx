@@ -10,7 +10,12 @@ import Categories from './pages/Categories'
 import Search from './pages/Search'
 
 const App = () => {
-  var categories = ['Cell Phones', 'Cell Phones Accessories', 'Cell Phones Cases & Clips', 'iPhone Accessories']
+  var categories = [
+    { id: 1, name: 'Cell Phones' },
+    { id: 2, name: 'Cell Phones Accessories' },
+    { id: 3, name: 'Cell Phones Cases & Clips' },
+    { id: 4, name: 'iPhone Accessories' }
+  ]
   var lastArticles = [
     {
       name: 'article1',

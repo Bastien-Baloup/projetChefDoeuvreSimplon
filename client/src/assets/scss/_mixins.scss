@@ -1,9 +1,9 @@
 @mixin responsive($device) {
-  @if $device == xs {
+  @if $device == 1card {
     @media (max-width: 559px) {
       @content;
     }
-  } @else if $device == s {
+  } @else if $device == 2card {
     @media (min-width: 560px) {
       @content;
     }
