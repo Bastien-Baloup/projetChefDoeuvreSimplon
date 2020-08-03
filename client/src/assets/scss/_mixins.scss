@@ -1,14 +1,14 @@
 @mixin responsive($device) {
-  @if $device == 1card {
+  @if $device == card1 {
     @media (max-width: 559px) {
       @content;
     }
-  } @else if $device == 2card {
+  } @else if $device == card2 {
     @media (min-width: 560px) {
       @content;
     }
-  } @else if $device == sm {
-    @media (min-width: 768px) {
+  } @else if $device == card3 {
+    @media (min-width: 888px) {
       @content;
     }
   } @else if $device == md {
