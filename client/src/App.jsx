@@ -7,13 +7,13 @@ import Home from './pages/Home'
 import Header from './components/Header'
 import News from './pages/News'
 import Categories from './pages/Categories'
-import Search from './pages/Search'
+import SearchPage from './pages/SearchPage'
 
 const App = () => {
   var categories = [
     { id: 1, name: 'Cell Phones' },
-    { id: 2, name: 'Cell Phones Accessories' },
-    { id: 3, name: 'Cell Phones Cases & Clips' },
+    { id: 2, name: 'Cell Phone Accessories' },
+    { id: 3, name: 'Cell Phone Cases & Clips' },
     { id: 4, name: 'iPhone Accessories' }
   ]
   var lastArticles = [
@@ -156,8 +156,8 @@ const App = () => {
             }
           />
           <Route exact path='/actualites' component={News} />
-          <Route path='/categorie' component={Categories} />
-          <Route path='/recherche' component={Search} />
+          <Route path='/categorie/:categoryName' component={Categories} />
+          <Route path='/recherche' component={SearchPage} />
         </Switch>
       </main>
     </BrowserRouter>

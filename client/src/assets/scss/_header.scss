@@ -30,8 +30,12 @@ header{
 
     nav{
       margin-left: auto;
-      a:visited{
-        color: $black
+      a, a:visited{
+        color: $black;
+        &.active{
+          color: $green;
+          text-decoration: underline;
+        }
       }
       ul{
         margin-right: 1rem;
