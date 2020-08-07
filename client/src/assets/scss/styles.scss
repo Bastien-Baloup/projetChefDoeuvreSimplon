@@ -7,23 +7,27 @@
 @import "carousel";
 @import "search";
 
-body{
-  background-color: $white;
-  margin: 0;
-  p{
+html{
+  overflow-x: hidden;
+  body{
+    overflow-x: hidden;
+    background-color: $white;
     margin: 0;
-  }
-  a{
-    text-decoration: none;
-    color: $green;
-    &:visited{
-      color: $yellow;
+    p{
+      margin: 0;
     }
-  }
+    a{
+      text-decoration: none;
+      color: $green;
+      &:visited{
+        color: $yellow;
+      }
+    }
 
-  ul{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    ul{
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
   }
 }
