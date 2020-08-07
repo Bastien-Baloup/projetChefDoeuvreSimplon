@@ -29,7 +29,7 @@ const InfiniteHits = ({ hits, hasPrevious, hasMore, refinePrevious, refineNext }
       </ul>
       {
         hasMore
-          ? <FontAwesomeIcon icon={faDiceD20} className='spinner' />
+          ? <div className='spinnerWrapp'><FontAwesomeIcon icon={faDiceD20} className='spinner' /></div>
           : <p>Pas d&apos;autres r&eacute;sultats</p>
       }
     </div>
