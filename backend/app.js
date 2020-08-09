@@ -14,11 +14,15 @@ mongoose.connect('mongodb+srv://projet-simplon-api:t5b5QH4S5gvUTvc@projet-simplo
 
 const getRoutes = require('./routes/get')
 const articleRoutes = require('./routes/articles')
+const adminRoutes = require('./routes/articles')
+const clientRoutes = require('./routes/client')
 
 app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/get', getRoutes)
 app.use('/article', articleRoutes)
+app.use('/auth/admin', adminRoutes)
+app.use('/auth/client', clientRoutes)
 
 module.exports = app

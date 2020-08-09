@@ -1,20 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const Article = require('../models/article')
+const adminAuth = require('../middleware/adminAuth')
 
-router.post('/new',
-  (req, res, next) => {
-    const article = new Article({ ...req.body.article })
-    article.save()
-      .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
-      .catch(
-        error => {
-          res.status(400).json({ error })
-          console.log(error)
-        }
-      )
-  }
-)
+const articleCtrl = require('../controllers/article')
+
+router.post('/', adminAuth, articleCtrl.createArticle)
+router.get('/', articleCtrl.getAllArticle)
+router.get('/:id', articleCtrl.getOneArticle)
+router.put('/:id', adminAuth, articleCtrl.modifyArticle)
+router.delete('/:id', adminAuth, articleCtrl.deleteArticle)
 
 module.exports = router
