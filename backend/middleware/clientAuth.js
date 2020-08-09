@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1]
     const decodedToken = jwt.verify(token, notSoSecretKey)
     const clientId = decodedToken.clientId
-    if (req.body.clientId && req.body.clientId !== clientId) {
+    if ((req.body.client._Id && req.body.client._Id !== clientId) || (req.params.id && req.params.id !== clientId)) {
       throw new Error('Invalid client ID')
     } else {
       next()

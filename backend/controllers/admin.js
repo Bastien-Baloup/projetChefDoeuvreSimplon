@@ -62,3 +62,71 @@ exports.login = (req, res, next) => {
       }
     )
 }
+
+exports.getOneAdmin = (req, res, next) => {
+  Admin.findOne({ _id: req.params.id })
+    .then(
+      admin => {
+        delete admin.password
+        res.status(200).json(admin)
+      }
+    )
+    .catch(
+      error => {
+        res.status(400).json({ error: error })
+        console.log(error)
+      }
+    )
+}
+
+exports.getAllAdmin = (req, res, next) => {
+  Admin.find()
+    .then(
+      admins => {
+        admins.map(admin => delete admin.password)
+        res.status(200).json(admins)
+      }
+    )
+    .catch(
+      error => {
+        res.status(400).json({ error: error })
+        console.log(error)
+      }
+    )
+}
+
+exports.modifyAdmin = (req, res, next) => {
+  const _admin = req.body.admin
+  bcrypt.hash(_admin.password, 10)
+    .then(
+      hash => {
+        delete _admin.password
+        const admin = new Admin({ ..._admin, password: hash })
+        Admin.updateOne({ _id: req.params.id }, admin)
+          .then(() => res.status(201).json({ message: 'admin modifié', objectId: admin._id }))
+          .catch(
+            error => {
+              res.status(400).json({ error: error })
+              console.log(error)
+            }
+          )
+      }
+    )
+    .catch(
+      error => {
+        res.status(500).json({ error: error })
+        console.log(error)
+      }
+    )
+}
+
+exports.deleteAdmin = (req, res, next) => {
+  Admin.deleteOne({ _id: req.params.id })
+    .then(() => res.status(201).json({ message: 'Admin supprime' }))
+    .catch(
+      error => {
+        res.status(400).json({ error: error })
+        console.log(error)
+      }
+    )
+}

@@ -13,9 +13,7 @@ exports.createArticle = (req, res, next) => {
 }
 
 exports.getOneArticle = (req, res, next) => {
-  Article.findOne({
-    _id: req.params.id
-  })
+  Article.findOne({ _id: req.params.id })
     .then(article => res.status(200).json(article))
     .catch(
       error => {
@@ -37,7 +35,7 @@ exports.getAllArticle = (req, res, next) => {
 }
 
 exports.modifyArticle = (req, res, next) => {
-  const id = req.body.article._id
+  const id = req.params.id
   delete req.body.article._id
   const article = new Article({ ...req.body.article })
   Article.updateOne({ _id: id }, article)
@@ -51,9 +49,8 @@ exports.modifyArticle = (req, res, next) => {
 }
 
 exports.deleteArticle = (req, res, next) => {
-  const id = req.body.article._id
-  Article.deleteOne({ _id: id })
-    .then(() => res.status(201).json({ message: 'Article supprime', objectId: id }))
+  Article.deleteOne({ _id: req.params.id })
+    .then(() => res.status(201).json({ message: 'Article supprime' }))
     .catch(
       error => {
         res.status(400).json({ error: error })
