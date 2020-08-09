@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUser, faShoppingCart, faDiceD20 } from '@fortawesome/free-solid-svg-icons'
 
-const fetch = window.fetch
 const apiUrl = 'http://localhost:3030'
 
 const Header = () => {
@@ -12,10 +12,10 @@ const Header = () => {
 
   const [categories, setCategories] = useState()
   useEffect(() => {
-    fetch(apiUrl + '/get/categories').then(res => res.json())
+    axios.get(apiUrl + '/get/categories')
       .then(
-        result => {
-          setCategories(result)
+        res => {
+          setCategories(res.data)
           setIsLoaded(true)
         },
         error => setError(error)

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Card from '../components/Card'
 import Carousel from '../components/Carousel'
 import { faDiceD20 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const fetch = window.fetch
 const apiUrl = 'http://localhost:3030'
 
 const Home = (props) => {
@@ -16,18 +16,18 @@ const Home = (props) => {
   const [newAndSales, setNewAndSales] = useState()
 
   useEffect(() => {
-    fetch(apiUrl + '/get/lastArticles').then(res => res.json())
+    axios.get(apiUrl + '/get/lastArticles')
       .then(
-        result => {
-          setArticles(result)
+        res => {
+          setArticles(res.data)
           setIsArticlesLoaded(true)
         },
         error => setError(error)
       )
-    fetch(apiUrl + '/get/newAndSales').then(res => res.json())
+    axios.get(apiUrl + '/get/newAndSales')
       .then(
-        result => {
-          setNewAndSales(result)
+        res => {
+          setNewAndSales(res.data)
           setIsNewLoaded(true)
         },
         error => setError(error)
