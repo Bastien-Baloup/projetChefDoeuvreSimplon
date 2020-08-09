@@ -150,18 +150,6 @@
   }
 }
 
-.infiniteHits .spinnerWrapp{
-  margin: 0 auto;
-  width: 32px;
-  height: 32px;
-  .spinner{
-    width: 32px;
-    height: 32px;
-    animation: spin 1.5s linear infinite;
-  }
-}
-
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

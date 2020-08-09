@@ -88,5 +88,16 @@ header{
         }
       }
     }
+    .spinnerWrapp{
+      margin: 0 auto;
+      width: 16px;
+      height: 16px;
+      .spinner{
+        width: 16px;
+        height: 16px;
+        color: $yellow;
+        animation: spin 1.5s linear infinite;
+      }
+    }
   }
 }

@@ -1,14 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUser, faShoppingCart, faDiceD20 } from '@fortawesome/free-solid-svg-icons'
 
-const Header = ({ categories }) => {
-  var listCategories = categories.map(category =>
-    <li key={category.id}>
-      <NavLink to={'/categorie/' + category.name}>{category.name}</NavLink>
-    </li>
-  )
+const fetch = window.fetch
+const apiUrl = 'http://localhost:3030'
+
+const Header = () => {
+  const [error, setError] = useState()
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  const [categories, setCategories] = useState()
+  useEffect(() => {
+    fetch(apiUrl + '/get/categories').then(res => res.json())
+      .then(
+        result => {
+          setCategories(result)
+          setIsLoaded(true)
+        },
+        error => setError(error)
+      )
+  }, [])
+
+  var listCategories = null
+  if (!error && isLoaded) {
+    listCategories = categories.map(category =>
+      <li key={category.id}>
+        <NavLink to={'/categorie/' + category.name}>{category.name}</NavLink>
+      </li>
+    )
+  } else if (!error) {
+    listCategories = <li><div className='spinnerWrapp'><FontAwesomeIcon icon={faDiceD20} className='spinner' /></div></li>
+  } else {
+    listCategories = <div className='error'>Error: {error.message}</div>
+  }
   return (
     <header>
       <div className='header'>
