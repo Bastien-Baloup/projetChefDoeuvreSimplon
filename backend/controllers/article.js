@@ -34,10 +34,21 @@ exports.getAllArticle = (req, res, next) => {
     )
 }
 
+exports.getNLastArticle = (req, res, next) => {
+  Article.find().limit(parseInt(req.params.n)).sort('-date')
+    .then(articles => res.status(200).json(articles))
+    .catch(
+      error => {
+        res.status(400).json({ error: error })
+        console.log(error)
+      }
+    )
+}
+
 exports.modifyArticle = (req, res, next) => {
   const id = req.params.id
-  delete req.body.article._id
   const article = new Article({ ...req.body.article })
+  article._id = id
   Article.updateOne({ _id: id }, article)
     .then(() => res.status(201).json({ message: 'Article mis à jour', objectId: id }))
     .catch(

@@ -13,8 +13,12 @@ mongoose.connect('mongodb+srv://projet-simplon-api:t5b5QH4S5gvUTvc@projet-simplo
   .catch(() => console.log('Connexion à MongoDB échouée !'))
 
 const getRoutes = require('./routes/get')
-const articleRoutes = require('./routes/articles')
-const adminRoutes = require('./routes/articles')
+const articleRoutes = require('./routes/article')
+const categoryRoutes = require('./routes/category')
+const productRoutes = require('./routes/product')
+const orderRoutes = require('./routes/order')
+const authRoutes = require('./routes/auth')
+const adminRoutes = require('./routes/admin')
 const clientRoutes = require('./routes/client')
 
 app.use(cors())
@@ -22,7 +26,11 @@ app.use(bodyParser.json())
 
 app.use('/get', getRoutes)
 app.use('/article', articleRoutes)
-app.use('/auth/admin', adminRoutes)
-app.use('/auth/client', clientRoutes)
+app.use('/category', categoryRoutes)
+app.use('/product', productRoutes)
+app.use('/order', orderRoutes)
+app.use('/auth', authRoutes)
+app.use('/admin', adminRoutes)
+app.use('/client', clientRoutes)
 
 module.exports = app

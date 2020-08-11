@@ -4,7 +4,7 @@ const notSoSecretKey = 'clientKey'
 
 module.exports = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1]
+    const token = req.headers.authorization
     const decodedToken = jwt.verify(token, notSoSecretKey)
     const clientId = decodedToken.clientId
     if ((req.body.client._Id && req.body.client._Id !== clientId) || (req.params.id && req.params.id !== clientId)) {
@@ -12,8 +12,7 @@ module.exports = (req, res, next) => {
     } else {
       next()
     }
-  } catch {
-    const error = new Error('Invalid request!')
+  } catch (error) {
     res.status(401).json({ error: error })
     console.log(error)
   }

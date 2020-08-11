@@ -4,7 +4,9 @@ const notSoSecretKey = 'YQRFPAwNVjVT7SczqkoTXWSDJKsnd1JtLpU29VSGpmEXAMuKyNbxFIu7
 
 module.exports = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1]
+    // const token = req.headers.authorization.split(' ')[1]
+    const token = req.headers.authorization
+
     const decodedToken = jwt.verify(token, notSoSecretKey)
     const adminId = decodedToken.adminId
     if (req.body.adminId && req.body.adminId !== adminId) {
@@ -12,8 +14,8 @@ module.exports = (req, res, next) => {
     } else {
       next()
     }
-  } catch {
-    const error = new Error('Invalid request!')
+  } catch (error) {
+    // const error = new Error('Invalid request!')
     res.status(401).json({ error: error })
     console.log(error)
   }
