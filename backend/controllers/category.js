@@ -36,14 +36,18 @@ exports.getAllCategory = (req, res, next) => {
 
 exports.modifyCategory = (req, res, next) => {
   const id = req.params.id
-  delete req.body.category._id
   const category = new Category({ ...req.body.category })
+  category._id = id
   Category.updateOne({ _id: id }, category)
     .then(() => res.status(201).json({ message: 'Categorie mis à jour', objectId: id }))
     .catch(
       error => {
-        res.status(400).json({ error: error })
-        console.log(error)
+        if (error.name === 'MongoError' && error.code === 11000) {
+          res.status(422).json({ error: error, message: 'Ce nom de catégorie est déjà pris' })
+        } else {
+          res.status(400).json({ error: error })
+          console.log(error.name)
+        }
       }
     )
 }

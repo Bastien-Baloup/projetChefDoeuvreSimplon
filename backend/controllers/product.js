@@ -36,8 +36,8 @@ exports.getAllProduct = (req, res, next) => {
 
 exports.modifyProduct = (req, res, next) => {
   const id = req.params.id
-  delete req.body.product._id
   const product = new Product({ ...req.body.product })
+  product._id = id
   Product.updateOne({ _id: id }, product)
     .then(() => res.status(201).json({ message: 'Produit mis à jour', objectId: id }))
     .catch(

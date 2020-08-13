@@ -15,8 +15,7 @@ module.exports = (req, res, next) => {
       next()
     }
   } catch (error) {
-    // const error = new Error('Invalid request!')
-    res.status(401).json({ error: error })
+    res.status(401).json({ ...error, message: 'Vous êtes déconnecté' })
     console.log(error)
   }
 }

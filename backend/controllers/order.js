@@ -58,8 +58,8 @@ exports.getAllOrder = (req, res, next) => {
 
 exports.modifyOrder = (req, res, next) => {
   const id = req.params.id
-  delete req.body.order._id
   const order = new Order({ ...req.body.order })
+  order._id = id
   Order.updateOne({ _id: id }, order)
     .then(() => res.status(201).json({ message: 'commande mise à jour', objectId: id }))
     .catch(

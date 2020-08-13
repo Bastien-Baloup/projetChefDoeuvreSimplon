@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
+
 import Card from '../components/Card'
-import { faDiceD20 } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Spinner from '../components/Spinner'
 
 const InfiniteHits = ({ hits, hasPrevious, hasMore, refinePrevious, refineNext }) => {
   const Hit = (hit) => <Card product={hit} />
@@ -29,7 +29,7 @@ const InfiniteHits = ({ hits, hasPrevious, hasMore, refinePrevious, refineNext }
       </ul>
       {
         hasMore
-          ? <div className='spinnerWrapp'><FontAwesomeIcon icon={faDiceD20} className='spinner' /></div>
+          ? <Spinner />
           : <p>Pas d&apos;autres r&eacute;sultats</p>
       }
     </div>

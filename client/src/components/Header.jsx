@@ -4,6 +4,8 @@ import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUser, faShoppingCart, faDiceD20 } from '@fortawesome/free-solid-svg-icons'
 
+import Spinner from '../components/Spinner'
+
 const apiUrl = 'http://localhost:3030'
 
 const Header = () => {
@@ -30,7 +32,7 @@ const Header = () => {
       </li>
     )
   } else if (!error) {
-    listCategories = <li><div className='spinnerWrapp'><FontAwesomeIcon icon={faDiceD20} className='spinner' /></div></li>
+    listCategories = <li><Spinner /></li>
   } else {
     listCategories = <div className='error'>Error: {error.message}</div>
   }

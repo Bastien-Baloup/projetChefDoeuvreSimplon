@@ -34,6 +34,17 @@ exports.getAllArticle = (req, res, next) => {
     )
 }
 
+exports.getOneArticleByTitle = (req, res, next) => {
+  Article.findOne({ title: req.params.title })
+    .then(article => res.status(200).json(article))
+    .catch(
+      error => {
+        res.status(400).json({ error: error })
+        console.log(error)
+      }
+    )
+}
+
 exports.getNLastArticle = (req, res, next) => {
   Article.find().limit(parseInt(req.params.n)).sort('-date')
     .then(articles => res.status(200).json(articles))

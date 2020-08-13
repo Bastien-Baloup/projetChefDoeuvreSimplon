@@ -28,9 +28,9 @@ const Card = ({ article, product, inCarousel }) => {
       )}
       {article && (
         <div className='article'>
-          <img src={article.img} alt='' />
+          <img src={article.imgSrc} alt='' />
           <div className='overlay' />
-          <Link to={'/article/' + article.name}>{article.name}</Link>
+          <Link to={'/article/' + article.title}>{article.title}</Link>
           <p>{article.excerpt}</p>
         </div>
       )}

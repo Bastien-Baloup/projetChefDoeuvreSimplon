@@ -100,7 +100,7 @@ exports.modifyClient = (req, res, next) => {
   bcrypt.hash(_client.password, 10)
     .then(
       hash => {
-        delete _client.password
+        _client.password = hash
         const client = new Client({ ..._client, password: hash })
         Client.updateOne({ _id: req.params.id }, client)
           .then(() => res.status(201).json({ message: 'client modifié', objectId: client._id }))

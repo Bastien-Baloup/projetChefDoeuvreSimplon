@@ -3,7 +3,7 @@
 
 body{
 
-  .infiniteHits ul{
+  .infiniteHits ul, .cardWrapper ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
