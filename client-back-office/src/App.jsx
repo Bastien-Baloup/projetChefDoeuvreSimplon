@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Header from './components/Header'
 import Articles from './pages/Articles'
 import Products from './pages/Products'
+import Orders from './pages/Orders'
 import Login from './pages/Login'
 import Disconnect from './components/Disconnect'
 import Spinner from './components/Spinner'
@@ -67,6 +68,7 @@ const App = () => {
                       <Route exact path='/' component={Home} />
                       <Route path='/articles' component={Articles} />
                       <Route path='/products' component={Products} />
+                      <Route path='/orders' component={Orders} />
                       <Route path='/login' key='login' component={Login} />
                       <Route path='/disconnect' component={Disconnect} />
                     </>
