@@ -5,14 +5,14 @@ exports.createOrder = (req, res, next) => {
   const order = new Order({ ...req.body.order })
 
   order.products.map(
-    productId => {
-      Product.findOne({ _id: productId })
+    orderProduct => {
+      Product.findOne({ _id: orderProduct.product_Id })
         .then(
           product => {
             if (!product) {
-              throw new Error({ message: 'Produit invallide', objectId: productId })
-            } else if (product.stock < 1) {
-              throw new Error({ message: 'Produit indisponible', objectId: productId })
+              throw new Error({ message: 'Produit invallide', objectId: product._id })
+            } else if (product.stock < orderProduct.count) {
+              throw new Error({ message: 'Stocks insufisants', objectId: product._id })
             }
           })
     })

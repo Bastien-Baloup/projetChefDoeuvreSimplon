@@ -27,7 +27,7 @@ const ArticleForm = () => {
 
     axios.post(apiUrl + '/article/', { article })
       .then(
-        res => {},
+        res => window.location.assign('/article'),
         error => setError(error)
       )
   }
@@ -48,7 +48,7 @@ const ArticleForm = () => {
 
     axios.put(apiUrl + '/article/' + article._id, { article })
       .then(
-        res => {},
+        res => window.location.assign('/article'),
         error => setError(error)
       )
   }
@@ -66,11 +66,11 @@ const ArticleForm = () => {
     }
   }, [])
 
-  var content = 'erreur incconue'
+  var content = []
 
   if (!title) {
-    content =
-      <form action='' onSubmit={handleSubmit}>
+    content.push(
+      <form action='' key='create' onSubmit={handleSubmit}>
         <label htmlFor='title'>titre</label>
         <input type='text' name='title' id='title' />
         <label htmlFor='admin_id'>Auteur</label>
@@ -85,12 +85,11 @@ const ArticleForm = () => {
         <input type='text' name='imgUrl' id='imgUrl' />
         <button type='submit'>submit</button>
       </form>
-  } else if (error) {
-    content = <div className='error'>Error: {error.response ? error.response.data.message : error.message}</div>
+    )
   } else if (isLoaded) {
     var date = new Date(article.date)
-    content =
-      <form action='' onSubmit={handleModify}>
+    content.push(
+      <form action='' key='modify' onSubmit={handleModify}>
         <label htmlFor='title'>titre</label>
         <input type='text' name='title' id='title' defaultValue={article.title} />
         <label htmlFor='admin_id'>Auteur</label>
@@ -106,8 +105,12 @@ const ArticleForm = () => {
         <input type='text' name='id' id='id' hidden readOnly value={article._id} />
         <button type='submit'>submit</button>
       </form>
+    )
   } else {
-    content = <Spinner />
+    content.push(<Spinner key='spinner' />)
+  }
+  if (error) {
+    content.push(<div className='error' key='error'>Error: {error.response !== undefined ? error.response.data.message : error.message}</div>)
   }
   return (
     <>{content}</>

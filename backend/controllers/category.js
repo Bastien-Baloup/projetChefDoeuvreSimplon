@@ -6,8 +6,12 @@ exports.createCategory = (req, res, next) => {
     .then(() => res.status(201).json({ message: 'Categorie ajouté', objectId: category._id }))
     .catch(
       error => {
-        res.status(400).json({ error: error })
-        console.log(error)
+        if (error.name === 'MongoError' && error.code === 11000) {
+          res.status(422).json({ message: 'Ce nom de catégorie est déjà pris' })
+        } else {
+          res.status(400).json({ error: error })
+          console.log(error)
+        }
       }
     )
 }
@@ -43,10 +47,10 @@ exports.modifyCategory = (req, res, next) => {
     .catch(
       error => {
         if (error.name === 'MongoError' && error.code === 11000) {
-          res.status(422).json({ error: error, message: 'Ce nom de catégorie est déjà pris' })
+          res.status(422).json({ message: 'Ce nom de catégorie est déjà pris' })
         } else {
           res.status(400).json({ error: error })
-          console.log(error.name)
+          console.log(error)
         }
       }
     )

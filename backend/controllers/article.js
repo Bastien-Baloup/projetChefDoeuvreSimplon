@@ -6,8 +6,12 @@ exports.createArticle = (req, res, next) => {
     .then(() => res.status(201).json({ message: 'Article ajouté', objectId: article._id }))
     .catch(
       error => {
-        res.status(400).json({ error: error })
-        console.log(error)
+        if (error.name === 'ValidationError') {
+          res.status(422).json({ error: error, message: 'Ce titre est déjà pris' })
+        } else {
+          res.status(400).json({ error: error })
+          console.log(error)
+        }
       }
     )
 }
@@ -64,8 +68,12 @@ exports.modifyArticle = (req, res, next) => {
     .then(() => res.status(201).json({ message: 'Article mis à jour', objectId: id }))
     .catch(
       error => {
-        res.status(400).json({ error: error })
-        console.log(error)
+        if (error.name === 'ValidationError') {
+          res.status(422).json({ message: 'Ce titre est déjà pris' })
+        } else {
+          res.status(400).json({ error: error })
+          console.log(error)
+        }
       }
     )
 }

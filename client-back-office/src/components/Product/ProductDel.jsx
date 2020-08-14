@@ -30,7 +30,7 @@ const ProductDel = () => {
   if (error) {
     content = <div className='error'>Error: {error.response ? error.response.data.message : error.message}</div>
   } else if (isDeleted) {
-    content = <div className='success'>Le produit à été supprimé</div>
+    content = <div className='success'>Le produit à été supprimé.</div>
   } else {
     content = <Spinner />
   }

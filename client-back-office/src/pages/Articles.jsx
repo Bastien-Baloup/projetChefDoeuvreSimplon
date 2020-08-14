@@ -13,11 +13,11 @@ const Articles = () => {
       <ArticleHeader />
       <div>
         <Switch>
-          <Route exact path={path} component={ArticleList} />
+          <Route exact path={path} key='list' component={ArticleList} />
           <Route exact path={`${path}/new`} key='new' component={ArticleForm} />
           <Route exact path={`${path}/modify/:title`} key='modify' component={ArticleForm} />
           <Route exact path={`${path}/delete/:title`}>
-            <ArticleDel />
+            <ArticleDel key='delete' />
             <ArticleList />
           </Route>
         </Switch>

@@ -28,13 +28,14 @@ const ProductList = () => {
   var content = <div />
 
   if (error) {
-    content = <div className='error'>Error: {error.message}</div>
+    content = <div className='error'>Error: {error.response ? error.response.data.message : error.message}</div>
   } else if (isLoaded) {
     content =
       <table>
         <thead>
           <tr>
             <th>Nom</th>
+            <th>Cat&eacute;gorie</th>
             <th>prix</th>
             <th>r&eacute;duction</th>
             <th>stocks</th>
@@ -47,10 +48,11 @@ const ProductList = () => {
             product =>
               <tr key={product.name}>
                 <td>{product.name}</td>
+                <td>{product.categories}</td>
                 <td>{product.price}</td>
                 <td>{product.sale}</td>
-                <td>{product.stocks}</td>
-                <td>{new Date(product.date).toLocaleDateString('fr-FR')}</td>
+                <td>{product.stock}</td>
+                <td>{new Date(product.addDate).toLocaleDateString('fr-FR')}</td>
                 <td><Link to={'/products/modify/' + product._id}><FontAwesomeIcon icon={faEdit} /></Link><Link to={'/products/delete/' + product._id}><FontAwesomeIcon icon={faTrash} /></Link></td>
               </tr>
           )}
