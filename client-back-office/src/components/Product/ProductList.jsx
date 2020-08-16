@@ -31,7 +31,7 @@ const ProductList = () => {
     content = <div className='error'>Error: {error.response ? error.response.data.message : error.message}</div>
   } else if (isLoaded) {
     content =
-      <table>
+      <table className='table is-hoverable'>
         <thead>
           <tr>
             <th>Nom</th>
@@ -53,7 +53,18 @@ const ProductList = () => {
                 <td>{product.sale}</td>
                 <td>{product.stock}</td>
                 <td>{new Date(product.addDate).toLocaleDateString('fr-FR')}</td>
-                <td><Link to={'/products/modify/' + product._id}><FontAwesomeIcon icon={faEdit} /></Link><Link to={'/products/delete/' + product._id}><FontAwesomeIcon icon={faTrash} /></Link></td>
+                <td>
+                  <Link to={'/products/modify/' + product._id}>
+                    <span className='icon'>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </span>
+                  </Link>
+                  <Link to={'/products/delete/' + product._id}>
+                    <span className='icon has-text-danger'>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </span>
+                  </Link>
+                </td>
               </tr>
           )}
         </tbody>

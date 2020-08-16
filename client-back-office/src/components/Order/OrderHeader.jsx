@@ -5,7 +5,6 @@ const OrderHeader = () => {
   return (
     <nav>
       <li><NavLink to='/orders'>Liste des Commandes</NavLink></li>
-      <li><NavLink to='/orders/new'>Nouvelle Commande</NavLink></li>
     </nav>
   )
 }

@@ -17,7 +17,7 @@ const orderSchema = mongoose.Schema(
     price: { type: String, required: true },
     billId: { type: String, required: true },
     validated: { type: Boolean, required: true },
-    trackingNumber: { type: String, required: true },
+    trackingNumber: { type: String },
     delivered: { type: Boolean, required: true }
   }
 )

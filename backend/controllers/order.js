@@ -10,28 +10,25 @@ exports.createOrder = (req, res, next) => {
         .then(
           product => {
             if (!product) {
-              throw new Error({ message: 'Produit invallide', objectId: product._id })
+              throw new Error({ message: 'Produit invallide', objectId: orderProduct.product_Id })
             } else if (product.stock < orderProduct.count) {
               throw new Error({ message: 'Stocks insufisants', objectId: product._id })
             }
           })
     })
-    .then(
-      order.save()
-        .then(() => res.status(201).json({ message: 'commande ajoutée', objectId: order._id }))
-        .catch(
-          error => {
-            res.status(400).json({ error: error })
-            console.log(error)
-          }
-        )
-    )
-    .catch(
-      error => {
-        res.status(400).json({ error: error })
-        console.log(error)
-      }
-    )
+  try {
+    order.save()
+      .then(() => res.status(201).json({ message: 'commande ajoutée', objectId: order._id }))
+      .catch(
+        error => {
+          res.status(400).json({ error: error })
+          console.log(error)
+        }
+      )
+  } catch (error) {
+    res.status(400).json({ error: error })
+    console.log(error)
+  }
 }
 
 exports.getOneOrder = (req, res, next) => {

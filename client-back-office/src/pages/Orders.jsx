@@ -14,7 +14,6 @@ const Orders = () => {
       <div>
         <Switch>
           <Route exact path={path} key='list' component={OrderList} />
-          <Route exact path={`${path}/new`} key='new' component={OrderForm} />
           <Route exact path={`${path}/modify/:id`} key='modify' component={OrderForm} />
           <Route exact path={`${path}/delete/:id`}>
             <OrderDel />

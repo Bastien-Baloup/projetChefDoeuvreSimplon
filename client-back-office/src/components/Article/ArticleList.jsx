@@ -31,7 +31,7 @@ const ArticleList = () => {
     content = <div className='error'>Error: {error.message}</div>
   } else if (isLoaded) {
     content =
-      <table>
+      <table className='table is-hoverable'>
         <thead>
           <tr>
             <th>Titre</th>
@@ -49,7 +49,18 @@ const ArticleList = () => {
                 <td>{article.admin}</td>
                 <td>{article.excerpt}</td>
                 <td>{new Date(article.date).toLocaleDateString('fr-FR')}</td>
-                <td><Link to={'/articles/modify/' + article.title}><FontAwesomeIcon icon={faEdit} /></Link><Link to={'/articles/delete/' + article.title}><FontAwesomeIcon icon={faTrash} /></Link></td>
+                <td>
+                  <Link to={'/articles/modify/' + article.title}>
+                    <span className='icon'>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </span>
+                  </Link>
+                  <Link to={'/articles/delete/' + article.title}>
+                    <span className='icon has-text-danger'>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </span>
+                  </Link>
+                </td>
               </tr>
           )}
         </tbody>
