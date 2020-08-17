@@ -71,39 +71,66 @@ const ArticleForm = () => {
   if (!title) {
     content.push(
       <form action='' key='create' onSubmit={handleSubmit}>
-        <label htmlFor='title'>titre</label>
-        <input type='text' name='title' id='title' />
-        <label htmlFor='admin_id'>Auteur</label>
-        <input type='text' name='admin' id='admin' />
-        <label htmlFor='date'>date</label>
-        <input type='date' name='date' id='date' />
-        <label htmlFor='content'>contenu</label>
-        <textarea name='content' id='content' />
-        <label htmlFor='excerpt'>extrait</label>
-        <input type='text' name='excerpt' id='excerpt' />
-        <label htmlFor='imgSrc'>img</label>
-        <input type='text' name='imgUrl' id='imgUrl' />
-        <button type='submit'>submit</button>
+        <div className='field'>
+          <label htmlFor='title' className='label'>titre</label>
+          <input type='text' name='title' id='title' className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='admin_id' className='label'>Auteur</label>
+          <input type='text' name='admin' id='admin' className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='date' className='label'>date</label>
+          <input type='date' name='date' id='date' className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='content' className='label'>contenu</label>
+          <textarea name='content' id='content' className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='excerpt' className='label'>extrait</label>
+          <input type='text' name='excerpt' id='excerpt' className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='imgSrc' className='label'>img</label>
+          <input type='text' name='imgUrl' id='imgUrl' className='control' />
+        </div>
+        <div className='control'>
+          <button type='submit' className='button'>submit</button>
+        </div>
       </form>
     )
   } else if (isLoaded) {
     var date = new Date(article.date)
     content.push(
       <form action='' key='modify' onSubmit={handleModify}>
-        <label htmlFor='title'>titre</label>
-        <input type='text' name='title' id='title' defaultValue={article.title} />
-        <label htmlFor='admin_id'>Auteur</label>
-        <input type='text' name='admin' id='admin' defaultValue={article.admin} />
-        <label htmlFor='date'>date</label>
-        <input type='date' name='date' id='date' defaultValue={date.toLocaleDateString('en-CA')} />
-        <label htmlFor='content'>contenu</label>
-        <textarea name='content' id='content' defaultValue={article.content} />
-        <label htmlFor='excerpt'>extrait</label>
-        <input type='text' name='excerpt' id='excerpt' defaultValue={article.excerpt} />
-        <label htmlFor='imgSrc'>img</label>
-        <input type='text' name='imgUrl' id='imgUrl' defaultValue={article.imgSrc} />
-        <input type='text' name='id' id='id' hidden readOnly value={article._id} />
-        <button type='submit'>submit</button>
+        <div className='field'>
+          <label htmlFor='title' className='label'>titre</label>
+          <input type='text' name='title' id='title' defaultValue={article.title} className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='admin_id' className='label'>Auteur</label>
+          <input type='text' name='admin' id='admin' defaultValue={article.admin} className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='date' className='label'>date</label>
+          <input type='date' name='date' id='date' defaultValue={date.toLocaleDateString('en-CA')} className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='content' className='label'>contenu</label>
+          <textarea name='content' id='content' defaultValue={article.content} className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='excerpt' className='label'>extrait</label>
+          <input type='text' name='excerpt' id='excerpt' defaultValue={article.excerpt} className='control' />
+        </div>
+        <div className='field'>
+          <label htmlFor='imgSrc' className='label'>img</label>
+          <input type='text' name='imgUrl' id='imgUrl' defaultValue={article.imgSrc} className='control' />
+        </div>
+        <div className='control'>
+          <button type='submit' className='button'>submit</button>
+        </div>
       </form>
     )
   } else {

@@ -61,7 +61,9 @@ const OrderForm = () => {
         <input type='checkbox' name='validated' id='validated' defaultChecked={_order.validated} />
         <label htmlFor='delivered'>Livrée</label>
         <input type='checkbox' name='delivered' id='delivered' defaultChecked={_order.delivered} />
-        <button type='submit'>submit</button>
+        <div className='control'>
+          <button type='submit' className='button'>submit</button>
+        </div>
       </form>
     )
   } else {

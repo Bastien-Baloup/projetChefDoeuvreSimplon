@@ -96,28 +96,40 @@ exports.getAllClient = (req, res, next) => {
 }
 
 exports.modifyClient = (req, res, next) => {
+  const id = req.params.id
   const _client = req.body.client
-  bcrypt.hash(_client.password, 10)
-    .then(
-      hash => {
-        _client.password = hash
-        const client = new Client({ ..._client, password: hash })
-        Client.updateOne({ _id: req.params.id }, client)
-          .then(() => res.status(201).json({ message: 'client modifié', objectId: client._id }))
-          .catch(
-            error => {
-              res.status(400).json({ error: error })
-              console.log(error)
-            }
-          )
-      }
-    )
-    .catch(
-      error => {
-        res.status(500).json({ error: error })
-        console.log(error)
-      }
-    )
+  _client._id = id
+  if (_client.password) {
+    bcrypt.hash(_client.password, 10)
+      .then(
+        hash => {
+          _client.password = hash
+          Client.updateOne({ _id: id }, { ..._client })
+            .then(() => res.status(201).json({ message: 'client modifié', objectId: id }))
+            .catch(
+              error => {
+                res.status(400).json({ error: error })
+                console.log(error)
+              }
+            )
+        }
+      )
+      .catch(
+        error => {
+          res.status(500).json({ error: error })
+          console.log(error)
+        }
+      )
+  } else {
+    Client.updateOne({ _id: id }, _client)
+      .then(() => res.status(201).json({ message: 'client modifié', objectId: id }))
+      .catch(
+        error => {
+          res.status(400).json({ error: error })
+          console.log(error)
+        }
+      )
+  }
 }
 
 exports.deleteClient = (req, res, next) => {

@@ -1,22 +1,22 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const ProductHeader = () => {
+const AdminHeader = () => {
   return (
     <nav className='navbar'>
       <ul className='navbar-start'>
         <li className='navbar-item'>
-          <NavLink to='/products'>Liste des produits</NavLink>
+          <NavLink to='/admins'>Liste des administateurs</NavLink>
         </li>
         <li className='navbar-item'>
-          <NavLink to='/products/new'>Nouveau produit</NavLink>
+          <NavLink to='/admins/new'>Nouveau compte administrateur</NavLink>
         </li>
         <li className='navbar-item'>
-          <NavLink to='/products/categories'>Gestion des catégories</NavLink>
+          <NavLink to='/admins/myAccount'>Mon compte</NavLink>
         </li>
       </ul>
     </nav>
   )
 }
 
-export default ProductHeader
+export default AdminHeader

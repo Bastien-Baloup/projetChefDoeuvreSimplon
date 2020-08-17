@@ -7,6 +7,8 @@ import Header from './components/Header'
 import Articles from './pages/Articles'
 import Products from './pages/Products'
 import Orders from './pages/Orders'
+import Clients from './pages/Clients'
+import Admins from './pages/Admins'
 import Login from './pages/Login'
 import Disconnect from './components/Disconnect'
 import Spinner from './components/Spinner'
@@ -72,7 +74,9 @@ const App = () => {
                       <Route path='/articles' component={Articles} />
                       <Route path='/products' component={Products} />
                       <Route path='/orders' component={Orders} />
-                      <Route path='/login' key='login' component={Login} />
+                      <Route path='/clients' component={Clients} />
+                      <Route path='/admins' component={Admins} />
+                      <Route path='/login' component={Login} />
                       <Route path='/disconnect' component={Disconnect} />
                     </>
                   )

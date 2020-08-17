@@ -67,7 +67,7 @@ exports.getOneAdmin = (req, res, next) => {
   Admin.findOne({ _id: req.params.id })
     .then(
       admin => {
-        delete admin.password
+        admin.password = ''
         res.status(200).json(admin)
       }
     )
@@ -83,7 +83,7 @@ exports.getAllAdmin = (req, res, next) => {
   Admin.find()
     .then(
       admins => {
-        admins.map(admin => delete admin.password)
+        admins.map(admin => (admin.password = ''))
         res.status(200).json(admins)
       }
     )
@@ -96,28 +96,41 @@ exports.getAllAdmin = (req, res, next) => {
 }
 
 exports.modifyAdmin = (req, res, next) => {
+  var id = req.params.id
   const _admin = req.body.admin
-  bcrypt.hash(_admin.password, 10)
-    .then(
-      hash => {
-        _admin.password = hash
-        const admin = new Admin({ ..._admin })
-        Admin.updateOne({ _id: req.params.id }, admin)
-          .then(() => res.status(201).json({ message: 'admin modifié', objectId: admin._id }))
-          .catch(
-            error => {
-              res.status(400).json({ error: error })
-              console.log(error)
-            }
-          )
-      }
-    )
-    .catch(
-      error => {
-        res.status(500).json({ error: error })
-        console.log(error)
-      }
-    )
+  _admin._id = id
+  if (_admin.password) {
+    id = req.body.adminId
+    bcrypt.hash(_admin.password, 10)
+      .then(
+        hash => {
+          _admin.password = hash
+          Admin.updateOne({ _id: id }, { ..._admin })
+            .then(() => res.status(201).json({ message: 'admin modifié', objectId: id }))
+            .catch(
+              error => {
+                res.status(400).json({ error: error })
+                console.log(error)
+              }
+            )
+        }
+      )
+      .catch(
+        error => {
+          res.status(500).json({ error: error })
+          console.log(error)
+        }
+      )
+  } else {
+    Admin.updateOne({ _id: id }, _admin)
+      .then(() => res.status(201).json({ message: 'admin modifié', objectId: id }))
+      .catch(
+        error => {
+          res.status(400).json({ error: error })
+          console.log(error)
+        }
+      )
+  }
 }
 
 exports.deleteAdmin = (req, res, next) => {

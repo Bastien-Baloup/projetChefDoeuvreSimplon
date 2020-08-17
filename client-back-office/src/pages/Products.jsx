@@ -17,10 +17,7 @@ const Products = () => {
           <Route exact path={path} key='list' component={ProductList} />
           <Route exact path={`${path}/new`} key='new' component={ProductForm} />
           <Route exact path={`${path}/modify/:id`} key='modify' component={ProductForm} />
-          <Route exact path={`${path}/delete/:id`}>
-            <ProductDel key='delete' />
-            <ProductList />
-          </Route>
+          <Route exact path={`${path}/delete/:id`} component={ProductDel} />
           <Route exact path={`${path}/categories`} key='new' component={Categories} />
         </Switch>
       </div>

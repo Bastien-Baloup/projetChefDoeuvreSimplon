@@ -11,16 +11,15 @@ const Articles = () => {
   return (
     <>
       <ArticleHeader />
-      <div>
-        <Switch>
-          <Route exact path={path} key='list' component={ArticleList} />
-          <Route exact path={`${path}/new`} key='new' component={ArticleForm} />
-          <Route exact path={`${path}/modify/:title`} key='modify' component={ArticleForm} />
-          <Route exact path={`${path}/delete/:title`}>
-            <ArticleDel key='delete' />
-            <ArticleList />
-          </Route>
-        </Switch>
+      <div className='section'>
+        <div className='container'>
+          <Switch>
+            <Route exact path={path} key='list' component={ArticleList} />
+            <Route exact path={`${path}/new`} key='new' component={ArticleForm} />
+            <Route exact path={`${path}/modify/:title`} key='modify' component={ArticleForm} />
+            <Route exact path={`${path}/delete/:title`} component={ArticleDel} />
+          </Switch>
+        </div>
       </div>
     </>
   )

@@ -109,7 +109,9 @@ const ProductForm = () => {
           </select>
           <label htmlFor='stock'>Qte. en stock</label>
           <input type='text' name='stock' id='stock' />
-          <button type='submit'>submit</button>
+          <div className='control'>
+            <button type='submit' className='button'>submit</button>
+          </div>
         </form>
       )
     } else if (isPLoaded) {
@@ -135,7 +137,9 @@ const ProductForm = () => {
           </select>
           <label htmlFor='stock'>Qte. en stock</label>
           <input type='text' name='stock' id='stock' defaultValue={_product.stock} />
-          <button type='submit'>submit</button>
+          <div className='control'>
+            <button type='submit' className='button'>submit</button>
+          </div>
         </form>
       )
     } else {
