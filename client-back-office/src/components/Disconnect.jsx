@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 
 const apiUrl = window.localStorage.getItem('apiUrl')
 
@@ -10,7 +9,7 @@ const Disconnect = () => {
       res => {},
       error => console.log(error.response.data.message)
     )
-  return (<Redirect to='/' />)
+  return (<div />)
 }
 
 export default Disconnect

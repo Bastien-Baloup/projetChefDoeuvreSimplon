@@ -69,6 +69,7 @@ const ClientList = () => {
 
   return (
     <>
+      <h3 className='subtitle'>Liste des clients</h3>
       {content}
     </>
   )

@@ -9,12 +9,22 @@ const Orders = () => {
   const path = useRouteMatch().path
   return (
     <>
-      <div>
-        <Switch>
-          <Route exact path={path} key='list' component={OrderList} />
-          <Route exact path={`${path}/modify/:id`} key='modify' component={OrderForm} />
-          <Route exact path={`${path}/delete/:id`} component={OrderDel} />
-        </Switch>
+      <div className='navbar has-background-grey-lighter'>
+        <div className='navbar-start'>
+          <div className='navbar-item'>
+            &nbsp;
+          </div>
+        </div>
+      </div>
+      <div className='section'>
+        <div className='container'>
+          <h2 className='title is-2'>Gestion des commandes</h2>
+          <Switch>
+            <Route exact path={path} key='list' component={OrderList} />
+            <Route exact path={`${path}/modify/:id`} key='modify' component={OrderForm} />
+            <Route exact path={`${path}/delete/:id`} component={OrderDel} />
+          </Switch>
+        </div>
       </div>
     </>
   )

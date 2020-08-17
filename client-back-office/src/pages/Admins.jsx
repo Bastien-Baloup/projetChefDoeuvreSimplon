@@ -13,6 +13,7 @@ const Admins = () => {
       <AdminHeader />
       <div className='section'>
         <div className='container'>
+          <h2 className='title is-2'>Gestion des comptes administrateurs</h2>
           <Switch>
             <Route exact path={path} key='list' component={AdminList} />
             <Route exact path={`${path}/new`} key='new' component={AdminForm} />

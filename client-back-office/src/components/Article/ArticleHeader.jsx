@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const ArticleHeader = () => {
   return (
-    <nav className='navbar'>
+    <nav className='navbar  has-background-grey-lighter'>
       <ul className='navbar-start'>
         <li className='navbar-item'>
           <NavLink to='/articles'>Liste des articles</NavLink>

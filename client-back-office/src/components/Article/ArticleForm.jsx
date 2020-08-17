@@ -70,68 +70,74 @@ const ArticleForm = () => {
 
   if (!title) {
     content.push(
-      <form action='' key='create' onSubmit={handleSubmit}>
-        <div className='field'>
-          <label htmlFor='title' className='label'>titre</label>
-          <input type='text' name='title' id='title' className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='admin_id' className='label'>Auteur</label>
-          <input type='text' name='admin' id='admin' className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='date' className='label'>date</label>
-          <input type='date' name='date' id='date' className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='content' className='label'>contenu</label>
-          <textarea name='content' id='content' className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='excerpt' className='label'>extrait</label>
-          <input type='text' name='excerpt' id='excerpt' className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='imgSrc' className='label'>img</label>
-          <input type='text' name='imgUrl' id='imgUrl' className='control' />
-        </div>
-        <div className='control'>
-          <button type='submit' className='button'>submit</button>
-        </div>
-      </form>
+      <>
+        <h3 className='subtitle'>Cr&eacute;ation d'un article</h3>
+        <form action='' key='create' onSubmit={handleSubmit}>
+          <div className='field is-horizontal'>
+            <label htmlFor='title' className='label column'>titre</label>
+            <input type='text' name='title' id='title' className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='admin_id' className='label column'>Auteur</label>
+            <input type='text' name='admin' id='admin' className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='date' className='label column'>date</label>
+            <input type='date' name='date' id='date' className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='content' className='label column'>contenu</label>
+            <textarea name='content' id='content' className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='excerpt' className='label column'>extrait</label>
+            <input type='text' name='excerpt' id='excerpt' className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='imgSrc' className='label column'>img</label>
+            <input type='text' name='imgUrl' id='imgUrl' className='control column' />
+          </div>
+          <div className='control column'>
+            <button type='submit' className='button'>submit</button>
+          </div>
+        </form>
+      </>
     )
   } else if (isLoaded) {
     var date = new Date(article.date)
     content.push(
-      <form action='' key='modify' onSubmit={handleModify}>
-        <div className='field'>
-          <label htmlFor='title' className='label'>titre</label>
-          <input type='text' name='title' id='title' defaultValue={article.title} className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='admin_id' className='label'>Auteur</label>
-          <input type='text' name='admin' id='admin' defaultValue={article.admin} className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='date' className='label'>date</label>
-          <input type='date' name='date' id='date' defaultValue={date.toLocaleDateString('en-CA')} className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='content' className='label'>contenu</label>
-          <textarea name='content' id='content' defaultValue={article.content} className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='excerpt' className='label'>extrait</label>
-          <input type='text' name='excerpt' id='excerpt' defaultValue={article.excerpt} className='control' />
-        </div>
-        <div className='field'>
-          <label htmlFor='imgSrc' className='label'>img</label>
-          <input type='text' name='imgUrl' id='imgUrl' defaultValue={article.imgSrc} className='control' />
-        </div>
-        <div className='control'>
-          <button type='submit' className='button'>submit</button>
-        </div>
-      </form>
+      <>
+        <h3 className='subtitle'>Modification de l'article {article.title}</h3>
+        <form action='' key='modify' onSubmit={handleModify}>
+          <div className='field is-horizontal'>
+            <label htmlFor='title' className='label column'>titre</label>
+            <input type='text' name='title' id='title' defaultValue={article.title} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='admin_id' className='label column'>Auteur</label>
+            <input type='text' name='admin' id='admin' defaultValue={article.admin} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='date' className='label column'>date</label>
+            <input type='date' name='date' id='date' defaultValue={date.toLocaleDateString('en-CA')} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='content' className='label column'>contenu</label>
+            <textarea name='content' id='content' defaultValue={article.content} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='excerpt' className='label column'>extrait</label>
+            <input type='text' name='excerpt' id='excerpt' defaultValue={article.excerpt} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='imgSrc' className='label column'>img</label>
+            <input type='text' name='imgUrl' id='imgUrl' defaultValue={article.imgSrc} className='control column' />
+          </div>
+          <div className='control column'>
+            <button type='submit' className='button'>submit</button>
+          </div>
+        </form>
+      </>
     )
   } else {
     content.push(<Spinner key='spinner' />)

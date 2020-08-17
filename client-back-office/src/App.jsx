@@ -34,7 +34,9 @@ const App = () => {
         },
         error => {
           if (error.response !== undefined && error.response.status === 401) {
+            window.localStorage.setItem('token', null)
             window.localStorage.setItem('isLoggedIn', false)
+            axios.defaults.headers.common.Authorization = null
             setIsChecked(true)
           } else {
             console.log(error)
@@ -43,20 +45,23 @@ const App = () => {
           }
         }
       )
-  }
-  axios.interceptors.response.use(
-    response => {
-      return response
-    },
-    error => {
-      if (error.response.status === 401) {
-        window.localStorage.setItem('token', null)
-        window.localStorage.setItem('isLoggedIn', false)
-        axios.defaults.headers.common.Authorization = null
+  } else {
+    axios.interceptors.response.use(
+      response => {
+        return response
+      },
+      error => {
+        if (error.response.status === 401) {
+          window.localStorage.setItem('token', null)
+          window.localStorage.setItem('isLoggedIn', false)
+          axios.defaults.headers.common.Authorization = null
+          window.location.replace('/')
+        }
+        return Promise.reject(error)
       }
-      return Promise.reject(error)
-    }
-  )
+    )
+  }
+
   return (
     <BrowserRouter>
       <>

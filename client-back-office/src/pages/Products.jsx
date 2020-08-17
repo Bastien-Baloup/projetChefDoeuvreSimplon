@@ -12,14 +12,17 @@ const Products = () => {
   return (
     <>
       <ProductHeader />
-      <div>
-        <Switch>
-          <Route exact path={path} key='list' component={ProductList} />
-          <Route exact path={`${path}/new`} key='new' component={ProductForm} />
-          <Route exact path={`${path}/modify/:id`} key='modify' component={ProductForm} />
-          <Route exact path={`${path}/delete/:id`} component={ProductDel} />
-          <Route exact path={`${path}/categories`} key='new' component={Categories} />
-        </Switch>
+      <div className='section'>
+        <div className='container'>
+          <h2 className='title is-2'>Gestion des produits</h2>
+          <Switch>
+            <Route exact path={path} key='list' component={ProductList} />
+            <Route exact path={`${path}/new`} key='new' component={ProductForm} />
+            <Route exact path={`${path}/modify/:id`} key='modify' component={ProductForm} />
+            <Route exact path={`${path}/delete/:id`} component={ProductDel} />
+            <Route exact path={`${path}/categories`} key='new' component={Categories} />
+          </Switch>
+        </div>
       </div>
     </>
   )

@@ -43,6 +43,7 @@ const ClientDel = () => {
   }
   return (
     <>
+      <h3 className='subtitle'>Suppression d'un compte client</h3>
       {content}
     </>
   )

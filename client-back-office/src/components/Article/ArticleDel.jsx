@@ -43,6 +43,7 @@ const ArticleDel = () => {
   }
   return (
     <>
+      <h3 className='subtitle'>Suppression d'un article</h3>
       {content}
     </>
   )

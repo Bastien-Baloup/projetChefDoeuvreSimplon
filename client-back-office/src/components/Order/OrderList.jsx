@@ -87,6 +87,7 @@ const OrderList = () => {
 
   return (
     <>
+      <h3 className='subtitle'>Liste des commandes</h3>
       {content}
     </>
   )

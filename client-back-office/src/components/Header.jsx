@@ -6,7 +6,7 @@ import { faDiceD20 } from '@fortawesome/free-solid-svg-icons'
 const Header = () => {
   var isLoggedIn = window.localStorage.getItem('isLoggedIn')
   return (
-    <header className='navbar'>
+    <header className='navbar has-background-grey-light'>
       <Link to='/' className='navbar-brand'>
         <FontAwesomeIcon icon={faDiceD20} className='icon is-large has-text-black-ter my-2 mx-3' />
         <h1 className='title is-1 has-text-black-ter my-1'>slicedice - CMS</h1>

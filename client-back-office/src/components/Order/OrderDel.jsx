@@ -43,6 +43,7 @@ const OrderDel = () => {
   }
   return (
     <>
+      <h3 className='subtitle'>Suppression d'une commande</h3>
       {content}
     </>
   )

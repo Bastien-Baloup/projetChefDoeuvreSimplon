@@ -46,15 +46,18 @@ const ClientForm = () => {
     content.push(<div className='error' key='error'>Error: L'id du client ne peut être nul</div>)
   } else if (isLoaded) {
     content.push(
-      <form action='' key='modify' onSubmit={handleModify}>
-        <div className='field'>
-          <label htmlFor='email' className='label'>Email du Client</label>
-          <input type='email' name='email' id='email' defaultValue={_client.client_email} className='control' />
-        </div>
-        <div className='control'>
-          <button type='submit' className='button'>submit</button>
-        </div>
-      </form>
+      <>
+        <h3 className='subtitle'>Modification du compte client de {_client.full_name}</h3>
+        <form action='' key='modify' onSubmit={handleModify}>
+          <div className='field is-horizontal'>
+            <label htmlFor='email' className='label column'>Email du Client</label>
+            <input type='email' name='email' id='email' defaultValue={_client.email_address} className='control column' />
+          </div>
+          <div className='control column'>
+            <button type='submit' className='button'>submit</button>
+          </div>
+        </form>
+      </>
     )
   } else {
     content.push(<Spinner key='spinner' />)

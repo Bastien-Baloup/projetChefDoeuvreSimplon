@@ -88,59 +88,111 @@ const ProductForm = () => {
   if (isCLoaded) {
     if (!id) {
       content.push(
-        <form action='' key='create' onSubmit={handleSubmit}>
-          <label htmlFor='name'>nom</label>
-          <input type='text' name='name' id='name' />
-          <label htmlFor='price'>prix</label>
-          <input type='text' name='price' id='price' />
-          <label htmlFor='sale'>Promotion (en %)</label>
-          <input type='text' name='sale' id='sale' />
-          <label htmlFor='imgSrc'>img</label>
-          <input type='text' name='imgSrc' id='imgSrc' />
-          <label htmlFor='description'>description</label>
-          <textarea name='description' id='description' />
-          <label htmlFor='brand'>marque</label>
-          <input type='text' name='brand' id='brand' />
-          <label htmlFor='tags'>mots-clés</label>
-          <input type='text' name='tags' id='tags' />
-          <label htmlFor='categories'>catégorie</label>
-          <select name='categories' id='categories'>
-            {categories.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
-          </select>
-          <label htmlFor='stock'>Qte. en stock</label>
-          <input type='text' name='stock' id='stock' />
-          <div className='control'>
-            <button type='submit' className='button'>submit</button>
-          </div>
-        </form>
+        <>
+          <h3 className='subtitle'>Nouveau Produit</h3>
+          <form action='' key='create' onSubmit={handleSubmit}>
+            <div className='field is-horizontal'>
+              <label htmlFor='name' className='label column'>nom</label>
+              <input type='text' name='name' id='name' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='price' className='label column'>prix</label>
+              <input type='text' name='price' id='price' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='sale' className='label column'>Promotion (en %)</label>
+              <input type='text' name='sale' id='sale' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='imgSrc' className='label column'>img</label>
+              <input type='text' name='imgSrc' id='imgSrc' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='description' className='label column'>description</label>
+              <textarea name='description' id='description' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='brand' className='label column'>marque</label>
+              <input type='text' name='brand' id='brand' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='tags' className='label column'>mots-clés</label>
+              <input type='text' name='tags' id='tags' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='categories' className='label column'>catégorie</label>
+              <div className='control column'>
+                <div className='select'>
+                  <select name='categories' id='categories'>
+                    {categories.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='stock' className='label column'>Qte. en stock</label>
+              <input type='text' name='stock' id='stock' className='control column' />
+            </div>
+            <div className='control'>
+              <button type='submit' className='button'>submit</button>
+            </div>
+          </form>
+        </>
+
       )
     } else if (isPLoaded) {
       content.push(
-        <form action='' key='modify' onSubmit={handleModify}>
-          <label htmlFor='name'>nom</label>
-          <input type='text' name='name' id='name' defaultValue={_product.name} />
-          <label htmlFor='price'>prix</label>
-          <input type='text' name='price' id='price' defaultValue={_product.price} />
-          <label htmlFor='sale'>Promotion (en %)</label>
-          <input type='text' name='sale' id='sale' defaultValue={_product.sale} />
-          <label htmlFor='imgSrc'>img</label>
-          <input type='text' name='imgSrc' id='imgSrc' defaultValue={_product.imgSrc} />
-          <label htmlFor='description'>description</label>
-          <textarea name='description' id='description' defaultValue={_product.description} />
-          <label htmlFor='brand'>marque</label>
-          <input type='text' name='brand' id='brand' defaultValue={_product.brand} />
-          <label htmlFor='tags'>mots-clés (si plusieurs, séparer par une virgule)</label>
-          <input type='text' name='tags' id='tags' defaultValue={_product.tags.toString()} />
-          <label htmlFor='categories'>catégorie</label>
-          <select name='categories' id='categories' defaultValue={_product.categories}>
-            {categories.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
-          </select>
-          <label htmlFor='stock'>Qte. en stock</label>
-          <input type='text' name='stock' id='stock' defaultValue={_product.stock} />
-          <div className='control'>
-            <button type='submit' className='button'>submit</button>
-          </div>
-        </form>
+        <>
+          <h3 className='subtitle'>Modification du produit : {_product.name}</h3>
+          <form action='' key='modify' onSubmit={handleModify}>
+            <div className='field is-horizontal'>
+              <label htmlFor='name' className='label column'>nom</label>
+              <input type='text' name='name' id='name' defaultValue={_product.name} className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='price' className='label column'>prix</label>
+              <input type='text' name='price' id='price' defaultValue={_product.price} className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='sale' className='label column'>Promotion (en %)</label>
+              <input type='text' name='sale' id='sale' defaultValue={_product.sale} className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='imgSrc' className='label column'>img</label>
+              <input type='text' name='imgSrc' id='imgSrc' defaultValue={_product.imgSrc} className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='description' className='label column'>description</label>
+              <textarea name='description' id='description' defaultValue={_product.description} className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='brand' className='label column'>marque</label>
+              <input type='text' name='brand' id='brand' defaultValue={_product.brand} className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='tags' className='label column'>mots-clés (si plusieurs, séparer par une virgule)</label>
+              <input type='text' name='tags' id='tags' defaultValue={_product.tags.toString()} className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='categories' className='label column'>catégorie</label>
+              <div className='control column'>
+                <div className='select'>
+                  <select name='categories' id='categories' defaultValue={_product.categories}>
+                    {categories.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='stock' className='label column'>Qte. en stock</label>
+              <input type='text' name='stock' id='stock' defaultValue={_product.stock} className='control column' />
+            </div>
+            <div className='control column'>
+              <button type='submit' className='button'>submit</button>
+            </div>
+          </form>
+        </>
+
       )
     } else {
       content.push(<Spinner key='spinner' />)

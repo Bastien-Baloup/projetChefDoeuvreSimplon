@@ -75,6 +75,7 @@ const ProductList = () => {
 
   return (
     <>
+      <h3 className='subtitle'>Liste des produits</h3>
       {content}
     </>
   )

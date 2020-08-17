@@ -50,21 +50,42 @@ const OrderForm = () => {
     content.push(<div className='error' key='error'>Error: L'id de commande ne peut être nul</div>)
   } else if (isLoaded) {
     content.push(
-      <form action='' key='modify' onSubmit={handleModify}>
-        <label htmlFor='email'>Email du Client</label>
-        <input type='email' name='email' id='email' defaultValue={_order.client_email} />
-        <label htmlFor='phone'>N° de Téléphone livraison</label>
-        <input type='tel' name='phone' id='phone' defaultValue={_order.delivery_phone} />
-        <label htmlFor='address'>Adresse de livraison</label>
-        <input type='text' name='address' id='address' defaultValue={_order.delivery_address} />
-        <label htmlFor='validated'>Validée</label>
-        <input type='checkbox' name='validated' id='validated' defaultChecked={_order.validated} />
-        <label htmlFor='delivered'>Livrée</label>
-        <input type='checkbox' name='delivered' id='delivered' defaultChecked={_order.delivered} />
-        <div className='control'>
-          <button type='submit' className='button'>submit</button>
-        </div>
-      </form>
+      <>
+        <h3 className='subtitle'>Modification de la commande n°{_order._id}</h3>
+        <form action='' key='modify' onSubmit={handleModify}>
+          <div className='field is-horizontal'>
+            <label htmlFor='email' className='label column'>Email du Client</label>
+            <input type='email' name='email' id='email' defaultValue={_order.client_email} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='phone' className='label column'>N° de Téléphone livraison</label>
+            <input type='tel' name='phone' id='phone' defaultValue={_order.delivery_phone} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='address' className='label column'>Adresse de livraison</label>
+            <input type='text' name='address' id='address' defaultValue={_order.delivery_address} className='control column' />
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='validated' className='label column'>Validée</label>
+            <div className='control column'>
+              <div className='checkbox'>
+                <input type='checkbox' name='validated' id='validated' defaultChecked={_order.validated} />
+              </div>
+            </div>
+          </div>
+          <div className='field is-horizontal'>
+            <label htmlFor='delivered' className='label column'>Livrée</label>
+            <div className='control column'>
+              <div className='checkbox'>
+                <input type='checkbox' name='delivered' id='delivered' defaultChecked={_order.delivered} />
+              </div>
+            </div>
+          </div>
+          <div className='control'>
+            <button type='submit' className='button'>submit</button>
+          </div>
+        </form>
+      </>
     )
   } else {
     content.push(<Spinner key='spinner' />)

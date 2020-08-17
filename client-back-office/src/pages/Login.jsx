@@ -27,23 +27,33 @@ const Login = () => {
       )
   }
   return (
-    <div className='section'>
-      <div className='container'>
-        <form action='' onSubmit={handleSubmit}>
-          <div className='field'>
-            <label htmlFor='login' className='label'>Login</label>
-            <input type='text' name='login' id='login' className='control' />
+    <>
+      <div className='navbar has-background-grey-lighter'>
+        <div className='navbar-start'>
+          <div className='navbar-item'>
+            &nbsp;
           </div>
-          <div className='field'>
-            <label htmlFor='password' className='label'>Password</label>
-            <input type='password' name='password' id='password' className='control' />
-          </div>
-          <div className='control'>
-            <button type='submit' className='button'>Login</button>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
+      <div className='section'>
+        <div className='container'>
+          <h2 className='title is-2'>Connexion</h2>
+          <form action='' onSubmit={handleSubmit}>
+            <div className='field is-horizontal'>
+              <label htmlFor='login' className='label column'>Login</label>
+              <input type='text' name='login' id='login' className='control column' />
+            </div>
+            <div className='field is-horizontal'>
+              <label htmlFor='password' className='label column'>Password</label>
+              <input type='password' name='password' id='password' className='control column' />
+            </div>
+            <div className='control column'>
+              <button type='submit' className='button'>Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
   )
 }
 

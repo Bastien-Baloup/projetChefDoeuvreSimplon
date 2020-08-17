@@ -36,6 +36,7 @@ const ProductDel = () => {
   }
   return (
     <>
+      <h3 className='subtitle'>Suppression d'un produit</h3>
       {content}
     </>
   )

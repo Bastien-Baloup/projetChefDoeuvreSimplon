@@ -44,7 +44,7 @@ exports.login = (req, res, next) => {
               if (!valid) {
                 return res.status(401).json({ error: 'Mot de passe incorrect' })
               }
-              res.status(200).json({ token: jwt.sign({ adminId: admin._id }, notSoSecretKey, { expiresIn: '4h' }) })
+              res.status(200).json({ token: jwt.sign({ adminId: admin._id }, notSoSecretKey, { expiresIn: '2h' }) })
             }
           )
           .catch(

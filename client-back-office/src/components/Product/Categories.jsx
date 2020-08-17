@@ -14,6 +14,10 @@ const CategoryList = () => {
   const [categories, setCategories] = useState()
   const [modified, setModified] = useState()
 
+  const buttonStyle = {
+    height: '100%'
+  }
+
   const handleDel = (e, id) => {
     e.preventDefault()
     axios.delete(apiUrl + '/category/' + id)
@@ -88,26 +92,36 @@ const CategoryList = () => {
   if (modified) {
     form =
       <form action='' key='modify' onSubmit={handleModify}>
-        <label htmlFor='name'>Modifier catégorie</label>
-        <input type='text' name='name' id='name' defaultValue={modified.name} />
-        <button type='submit'>créer</button>
+        <div className='field is-horizontal'>
+          <label htmlFor='name' className='label column'>Modifier catégorie</label>
+          <input type='text' name='name' id='name' defaultValue={modified.name} className='control column' />
+          <div className='control'>
+            <button type='submit' className='button' style={buttonStyle}>modifier</button>
+          </div>
+        </div>
+
       </form>
   } else {
     form =
       <form action='' key='create' onSubmit={handleSubmit}>
-        <label htmlFor='name'>Nouvelle catégorie</label>
-        <input type='text' name='name' id='name' defaultValue='' />
-        <button type='submit'>créer</button>
+        <div className='field is-horizontal has-addons'>
+          <label htmlFor='name' className='label column'>Nouvelle catégorie</label>
+          <input type='text' name='name' id='name' defaultValue='' className='control column' />
+          <div className='control'>
+            <button type='submit' className='button' style={buttonStyle}>créer</button>
+          </div>
+        </div>
+
       </form>
   }
 
   var contents = []
   if (isLoaded) {
     if (isDeleted) {
-      contents.push(<div className='success' key='delete'>La catégorie à été supprimé</div>)
+      contents.push(<div key='delete'>La catégorie à été supprimé</div>)
     }
     contents.push(
-      <table key='categoryList'>
+      <table key='categoryList' className='table'>
         <thead>
           <tr>
             <th>Nom</th>
@@ -119,7 +133,18 @@ const CategoryList = () => {
             category =>
               <tr key={category.name}>
                 <td>{category.name}</td>
-                <td><a href='' onClick={(e) => { setModified(category); e.preventDefault() }}><FontAwesomeIcon icon={faEdit} /></a><a href='' onClick={(e) => handleDel(e, category._id)}><FontAwesomeIcon icon={faTrash} /></a></td>
+                <td>
+                  <a href='' onClick={(e) => { setModified(category); e.preventDefault() }}>
+                    <span className='icon'>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </span>
+                  </a>
+                  <a href='' onClick={(e) => handleDel(e, category._id)}>
+                    <span className='icon has-text-danger'>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </span>
+                  </a>
+                </td>
               </tr>
           )}
         </tbody>
@@ -135,6 +160,7 @@ const CategoryList = () => {
 
   return (
     <>
+      <h3 className='subtitle'>Gestion des catégories</h3>
       {contents}
     </>
   )

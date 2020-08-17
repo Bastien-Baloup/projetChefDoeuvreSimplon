@@ -60,6 +60,7 @@ const AdminList = () => {
 
   return (
     <>
+      <h3 className='subtitle'>Liste des administrateurs</h3>
       {content}
     </>
   )

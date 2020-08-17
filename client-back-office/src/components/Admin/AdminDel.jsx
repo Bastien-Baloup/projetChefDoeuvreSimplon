@@ -43,6 +43,7 @@ const AdminDel = () => {
   }
   return (
     <>
+      <h3 className='subtitle'>Suppression d'un compte administrateur</h3>
       {content}
     </>
   )

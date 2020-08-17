@@ -71,6 +71,7 @@ const ArticleList = () => {
 
   return (
     <>
+      <h3 className='subtitle'>Liste des articles</h3>
       {content}
     </>
   )

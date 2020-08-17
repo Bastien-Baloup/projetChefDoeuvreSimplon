@@ -13,6 +13,7 @@ const Articles = () => {
       <ArticleHeader />
       <div className='section'>
         <div className='container'>
+          <h2 className='title is-2'>Gestion des articles</h2>
           <Switch>
             <Route exact path={path} key='list' component={ArticleList} />
             <Route exact path={`${path}/new`} key='new' component={ArticleForm} />
