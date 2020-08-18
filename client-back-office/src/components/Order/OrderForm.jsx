@@ -66,7 +66,7 @@ const OrderForm = () => {
             <input type='text' name='address' id='address' defaultValue={_order.delivery_address} className='control column' />
           </div>
           <div className='field is-horizontal'>
-            <label htmlFor='validated' className='label column'>Validée</label>
+            <label htmlFor='validated' className='label column'>Envoyée</label>
             <div className='control column'>
               <div className='checkbox'>
                 <input type='checkbox' name='validated' id='validated' defaultChecked={_order.validated} />

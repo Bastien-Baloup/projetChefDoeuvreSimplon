@@ -40,7 +40,7 @@ const OrderList = () => {
             <th>Date de commande</th>
             <th>N° de facture</th>
             <th>N° de Livraison</th>
-            <th>validé ?</th>
+            <th>Envoyé ?</th>
             <th>livré ?</th>
             <th>&nbsp;</th>
           </tr>

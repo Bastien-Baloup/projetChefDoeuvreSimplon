@@ -12,7 +12,7 @@ const OrderDel = () => {
   const [isDeleted, setIsDeleted] = useState(false)
 
   useEffect(() => {
-    axios.get(apiUrl + '/order/byId/' + id)
+    axios.get(apiUrl + '/order/' + id)
       .then(
         res => {
           var order = res.data
