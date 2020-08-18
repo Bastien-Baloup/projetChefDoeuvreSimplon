@@ -4,7 +4,7 @@ import Card from '../components/Card'
 import Carousel from '../components/Carousel'
 import Spinner from '../components/Spinner'
 
-const apiUrl = 'http://localhost:3030'
+const apiUrl = window.localStorage.getItem('apiUrl')
 
 const Home = (props) => {
   const [error, setError] = useState()

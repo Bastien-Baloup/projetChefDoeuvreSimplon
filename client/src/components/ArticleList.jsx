@@ -4,7 +4,7 @@ import axios from 'axios'
 import Card from './Card'
 import Spinner from './Spinner'
 
-const apiUrl = 'http://localhost:3030'
+const apiUrl = window.localStorage.getItem('apiUrl')
 
 const ArticleList = (props) => {
   const [error, setError] = useState()

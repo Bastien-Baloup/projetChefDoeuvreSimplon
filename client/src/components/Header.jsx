@@ -6,7 +6,7 @@ import { faSearch, faUser, faShoppingCart, faDiceD20 } from '@fortawesome/free-s
 
 import Spinner from '../components/Spinner'
 
-const apiUrl = 'http://localhost:3030'
+const apiUrl = window.localStorage.getItem('apiUrl')
 
 const Header = () => {
   const [error, setError] = useState()
