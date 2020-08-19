@@ -31,7 +31,7 @@ const OrderDel = () => {
         },
         error => setError(error)
       )
-  }, [])
+  }, [id])
 
   var content = 'Une erreur inconnue est survenue'
   if (error) {

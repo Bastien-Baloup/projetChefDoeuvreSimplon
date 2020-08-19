@@ -42,7 +42,7 @@ const OrderForm = () => {
           error => setError(error)
         )
     }
-  }, [])
+  }, [id])
 
   var content = []
 

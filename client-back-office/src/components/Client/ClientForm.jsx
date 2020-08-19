@@ -38,7 +38,7 @@ const ClientForm = () => {
           error => setError(error)
         )
     }
-  }, [])
+  }, [id])
 
   var content = []
 

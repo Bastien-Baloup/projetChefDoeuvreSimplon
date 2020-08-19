@@ -52,6 +52,17 @@ exports.getAllProduct = (req, res, next) => {
     )
 }
 
+exports.getOneProductByName = (req, res, next) => {
+  Product.findOne({ name: req.params.name })
+    .then(product => res.status(200).json(product))
+    .catch(
+      error => {
+        res.status(400).json({ error: error })
+        console.log(error)
+      }
+    )
+}
+
 exports.modifyProduct = (req, res, next) => {
   const id = req.params.id
   const product = new Product({ ...req.body.product })

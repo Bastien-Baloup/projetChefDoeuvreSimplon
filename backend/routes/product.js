@@ -8,6 +8,7 @@ const productCtrl = require('../controllers/product')
 router.post('/', adminAuth, productCtrl.createProduct)
 router.get('/', productCtrl.getAllProduct)
 router.get('/:id', productCtrl.getOneProduct)
+router.get('/byName/:name', productCtrl.getOneProductByName)
 router.put('/:id', adminAuth, productCtrl.modifyProduct)
 router.delete('/:id', adminAuth, productCtrl.deleteProduct)
 

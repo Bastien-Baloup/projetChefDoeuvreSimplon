@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const Card = ({ article, product, inCarousel }) => {
   if (product) {
@@ -15,7 +17,7 @@ const Card = ({ article, product, inCarousel }) => {
       {product && (
         <div className='product'>
           <Link to={'/product/' + product.name} className='img'><img src={product.image} alt={'image du produit ' + product.name} /></Link>
-          <Link to={'/product/' + product.name} className='name'>{product.name}</Link>
+          <Link to={'/product/' + product.name} title={product.name} className='name'>{product.name.substr(0, 50) + '\u2026'}</Link>
           {(product.sale !== 0) ? (
             <>
               <p className='oldPrice'>{product.price + '€'}</p>
@@ -24,6 +26,7 @@ const Card = ({ article, product, inCarousel }) => {
           ) : (
             <p className='price'>{product.price + '€'}</p>
           )}
+          <button><FontAwesomeIcon icon={faShoppingCart} /> Ajouter au panier</button>
         </div>
       )}
       {article && (

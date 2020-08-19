@@ -24,7 +24,7 @@ const ProductDel = () => {
     } else {
       setError(new Error("le produit d'id " + id + " n'existe pas"))
     }
-  }, [])
+  }, [id])
 
   var content = 'Une erreur inconnue est survenue'
   if (error) {

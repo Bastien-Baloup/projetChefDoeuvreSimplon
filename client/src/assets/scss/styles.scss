@@ -1,11 +1,13 @@
 @import "mixins";
 @import "fonts";
 @import "variables";
-@import "../../../../../node_modules/react-alice-carousel/lib/scss/alice-carousel.scss";
+@import "../../../node_modules/react-alice-carousel/lib/scss/alice-carousel.scss";
 
 @import "header";
 @import "carousel";
 @import "search";
+@import "article";
+@import "product";
 
 html{
   overflow-x: hidden;
@@ -31,6 +33,24 @@ html{
       margin: 0;
     }
 
+    button{
+      padding: .2rem;
+      border: none;
+      border-radius: .2rem;
+      outline: none;
+      background-color: $green;
+      color: $yellow;
+      fill: $yellow;
+      box-shadow: 0 3px #999;
+      overflow: hidden;
+      transition: ease-in .05s;
+      &:active{
+        box-shadow: 0 1px #666;
+        transform: translate(0, 2px);
+        transition: ease-out .1s;
+      }
+    }
+
 
     .spinnerWrapp{
       margin: 0 auto;
@@ -43,4 +63,9 @@ html{
       }
     }
   }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

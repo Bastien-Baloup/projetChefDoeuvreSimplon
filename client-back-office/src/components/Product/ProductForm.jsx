@@ -81,7 +81,7 @@ const ProductForm = () => {
           setError(error)
         }
       )
-  }, [])
+  }, [id])
 
   var content = []
 

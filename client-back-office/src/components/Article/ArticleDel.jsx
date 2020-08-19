@@ -31,7 +31,7 @@ const ArticleDel = () => {
         },
         error => setError(error)
       )
-  }, [])
+  }, [title])
 
   var content = 'Une erreur inconnue est survenue'
   if (error) {

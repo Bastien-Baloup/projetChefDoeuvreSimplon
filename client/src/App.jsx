@@ -9,6 +9,7 @@ import News from './pages/News'
 import Categories from './pages/Categories'
 import SearchPage from './pages/SearchPage'
 import Article from './pages/Article'
+import Product from './pages/Product'
 
 window.localStorage.setItem('apiUrl', 'http://192.168.0.222:3030')
 // const apiUrl = window.localStorage.getItem('apiUrl')
@@ -25,6 +26,7 @@ const App = () => {
             <Route path='/categorie/:categoryName' component={Categories} />
             <Route path='/recherche' component={SearchPage} />
             <Route path='/article/:title' component={Article} />
+            <Route path='/product/:name' component={Product} />
           </Switch>
         </main>
       </>

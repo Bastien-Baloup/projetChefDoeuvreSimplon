@@ -17,7 +17,7 @@ import 'bulma/css/bulma.min.css'
 import 'bulma/css/bulma.css.map'
 import './spinner.css'
 
-window.localStorage.setItem('apiUrl', 'http://localhost:3030')
+window.localStorage.setItem('apiUrl', 'http://192.168.0.222:3030')
 const apiUrl = window.localStorage.getItem('apiUrl')
 
 const App = () => {

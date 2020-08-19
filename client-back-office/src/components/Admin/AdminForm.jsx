@@ -11,17 +11,14 @@ const AdminForm = () => {
     const form = e.target
 
     const admin = {
-      title: form[0].value,
-      admin: form[1].value,
-      date: form[2].value,
-      content: form[3].value,
-      excerpt: form[4].value,
-      imgSrc: form[5].value
+      name: form[0].value,
+      login: form[1].value,
+      password: form[2].value
     }
 
-    axios.post(apiUrl + '/admin/', { admin })
+    axios.post(apiUrl + '/auth/admin/signup', { admin })
       .then(
-        res => window.location.assign('/admin'),
+        res => window.location.assign('/admins'),
         error => setError(error)
       )
   }
