@@ -134,11 +134,13 @@ const CategoryList = () => {
               <tr key={category.name}>
                 <td>{category.name}</td>
                 <td>
+                  {/* eslint-disable-next-line */}
                   <a href='' onClick={(e) => { setModified(category); e.preventDefault() }}>
                     <span className='icon'>
                       <FontAwesomeIcon icon={faEdit} />
                     </span>
                   </a>
+                  {/* eslint-disable-next-line */}
                   <a href='' onClick={(e) => handleDel(e, category._id)}>
                     <span className='icon has-text-danger'>
                       <FontAwesomeIcon icon={faTrash} />

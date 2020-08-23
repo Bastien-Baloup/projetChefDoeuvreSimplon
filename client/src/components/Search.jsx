@@ -17,20 +17,21 @@ const Search = ({ category }) => {
     <>
       <InstantSearch
         searchClient={searchClient}
-        indexName='demo_ecommerce'
+        indexName='dev_projetFinal'
         onSearchStateChange={onSearchStateChange}
         searchState={searchState}
       >
-        {category ? <Configure filters={'categories:"' + category + '"'} /> : <SearchBox />}
+        {category ? <Configure filters={'categories:"' + category + '"'} hitsPerPage={24} /> : <SearchBox />}
         <div className='buttons'>
           <button onClick={() => setIsModalOpen(true)}>Filtrer <FontAwesomeIcon icon={faSlidersH} /></button>
           <SortBy
             items={[
-              { value: 'demo_ecommerce', label: 'Price desc' },
-              { value: 'price_asc', label: 'Price asc' },
-              { value: 'popularity', label: 'Popularity' }
+              { value: 'dev_projetFinal', label: 'Nom' },
+              { value: 'dev_price_asc', label: 'Prix asc' },
+              { value: 'dev_price_desc', label: 'Prix desc' },
+              { value: 'dev_sale', label: 'Promotions' }
             ]}
-            defaultRefinement='popularity'
+            defaultRefinement='dev_projetFinal'
           />
         </div>
         <CurrentRefinements />

@@ -10,7 +10,6 @@ const orderProductSchema = mongoose.Schema(
 const orderSchema = mongoose.Schema(
   {
     client_email: { type: String, required: true },
-    delivery_phone: { type: String, required: true },
     delivery_address: { type: String, required: true },
     date: { type: Date, default: Date.now },
     products: [{ type: orderProductSchema, required: true }],

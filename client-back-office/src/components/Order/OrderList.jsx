@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faCheck, faTimes, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Spinner from '../Spinner'
 
@@ -66,6 +66,11 @@ const OrderList = () => {
                   </span>
                 </td>
                 <td>
+                  <Link to={'/orders/read/' + order._id}>
+                    <span className='icon'>
+                      <FontAwesomeIcon icon={faExternalLinkAlt} />
+                    </span>
+                  </Link>
                   <Link to={'/orders/modify/' + order._id}>
                     <span className='icon'>
                       <FontAwesomeIcon icon={faEdit} />

@@ -4,6 +4,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import OrderList from '../components/Order/OrderList'
 import OrderForm from '../components/Order/OrderForm'
 import OrderDel from '../components/Order/OrderDel'
+import OrderRead from '../components/Order/OrderRead'
 
 const Orders = () => {
   const path = useRouteMatch().path
@@ -23,6 +24,7 @@ const Orders = () => {
             <Route exact path={path} key='list' component={OrderList} />
             <Route exact path={`${path}/modify/:id`} key='modify' component={OrderForm} />
             <Route exact path={`${path}/delete/:id`} component={OrderDel} />
+            <Route exact path={`${path}/read/:id`} component={OrderRead} />
           </Switch>
         </div>
       </div>

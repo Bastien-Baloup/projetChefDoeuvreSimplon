@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { useCart } from 'use-cart'
 
 import Spinner from '../components/Spinner'
 
@@ -14,6 +15,7 @@ const Product = () => {
   const [product, setProduct] = useState()
   const [isLoaded, setIsLoaded] = useState(false)
   const [error, setError] = useState()
+  const { addItem } = useCart()
 
   useEffect(() => {
     axios.get(apiUrl + '/product/byName/' + name)
@@ -57,7 +59,7 @@ const Product = () => {
                   </>
                 )}
             </div>
-            <button><FontAwesomeIcon icon={faShoppingCart} /> Ajouter au panier</button>
+            <button className='button' onClick={() => addItem(product._id)}><FontAwesomeIcon icon={faShoppingCart} /> Ajouter au panier</button>
             <p className='stock label'>{product.stock} exemplaires en stock</p>
           </div>
         </div>

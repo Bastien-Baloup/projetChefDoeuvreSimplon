@@ -8,6 +8,7 @@
 @import "search";
 @import "article";
 @import "product";
+@import "cart";
 
 html{
   overflow-x: hidden;
@@ -33,7 +34,7 @@ html{
       margin: 0;
     }
 
-    button{
+    .button{
       padding: .2rem;
       border: none;
       border-radius: .2rem;

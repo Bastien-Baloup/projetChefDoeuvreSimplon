@@ -1,26 +1,14 @@
 const http = require('http')
+var fs = require('fs')
+var https = require('https')
 const app = require('./app')
-
-const normalizePort = val => {
-  const port = parseInt(val, 10)
-
-  if (isNaN(port)) {
-    return val
-  }
-  if (port >= 0) {
-    return port
-  }
-  return false
-}
-const port = normalizePort(process.env.PORT || '3030')
-app.set('port', port)
 
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error
   }
   const address = server.address()
-  const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port: 3030'
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges.')
@@ -35,11 +23,16 @@ const errorHandler = error => {
 
 const server = http.createServer(app)
 
-server.on('error', errorHandler)
-server.on('listening', () => {
-  const address = server.address()
-  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port
-  console.log('Listening on ' + bind)
-})
+const serverHttps = https.createServer({ key: fs.readFileSync('./server.key'), cert: fs.readFileSync('server.cert') }, app)
+  .listen(3080, () => {
+    const address = serverHttps.address()
+    const bind = typeof address === 'string' ? 'pipe ' + address : 'port 3080'
+    console.log('HTTPS listening on ' + bind)
+  }).on('error', errorHandler)
 
-server.listen(port)
+server.on('error', errorHandler)
+server.listen(3030, () => {
+  const address = serverHttps.address()
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port 3030'
+  console.log('HTTP listening on ' + bind)
+})

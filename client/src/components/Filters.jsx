@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 ReactModal.setAppElement('#root')
 const VirtualRefinementList0 = connectRefinementList(() => null)
 const VirtualRefinementList1 = connectRefinementList(() => null)
+const VirtualRefinementList2 = connectRefinementList(() => null)
 const VirtualRange = connectRange(() => null)
 
 const Filters = ({ withCategories, searchClient, searchState, onSearchStateChange, isOpen, setIsOpen }) => {
@@ -14,6 +15,7 @@ const Filters = ({ withCategories, searchClient, searchState, onSearchStateChang
     <>
       <VirtualRefinementList0 attribute='brand' />
       {withCategories && <VirtualRefinementList1 attribute='categories' />}
+      <VirtualRefinementList2 attribute='tags' />
       <VirtualRange attribute='price' />
       <ReactModal
         isOpen={isOpen}
@@ -22,7 +24,7 @@ const Filters = ({ withCategories, searchClient, searchState, onSearchStateChang
         <button className='close' onClick={() => setIsOpen(false)}><FontAwesomeIcon icon={faTimes} /></button>
         <InstantSearch
           searchClient={searchClient}
-          indexName='demo_ecommerce'
+          indexName='dev_projetFinal'
           onSearchStateChange={onSearchStateChange}
           searchState={searchState}
         >
@@ -36,6 +38,10 @@ const Filters = ({ withCategories, searchClient, searchState, onSearchStateChang
               <RefinementList attribute='categories' limit={200} />
             </div>
           }
+          <div className='tags'>
+            <h3>Mot-clés :</h3>
+            <RefinementList attribute='tags' limit={200} />
+          </div>
           <div className='price'>
             <h3>Prix :</h3>
             <RangeInput attribute='price' translations={{separator: '-'}} />

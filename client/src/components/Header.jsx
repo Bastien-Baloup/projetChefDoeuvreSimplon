@@ -14,7 +14,7 @@ const Header = () => {
 
   const [categories, setCategories] = useState()
   useEffect(() => {
-    axios.get(apiUrl + '/get/categories')
+    axios.get(apiUrl + '/category')
       .then(
         res => {
           setCategories(res.data)
@@ -27,7 +27,7 @@ const Header = () => {
   var listCategories = null
   if (!error && isLoaded) {
     listCategories = categories.map(category =>
-      <li key={category.id}>
+      <li key={category._id}>
         <NavLink to={'/categorie/' + category.name}>{category.name}</NavLink>
       </li>
     )
