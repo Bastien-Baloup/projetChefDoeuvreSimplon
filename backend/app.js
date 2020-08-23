@@ -12,7 +12,6 @@ mongoose.connect('mongodb+srv://projet-simplon-api:t5b5QH4S5gvUTvc@projet-simplo
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'))
 
-const getRoutes = require('./routes/get')
 const articleRoutes = require('./routes/article')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
@@ -25,7 +24,6 @@ const webhookRoutes = require('./routes/webhook')
 
 app.use(cors())
 
-app.use('/get', bodyParser.json(), getRoutes)
 app.use('/article', bodyParser.json(), articleRoutes)
 app.use('/category', bodyParser.json(), categoryRoutes)
 app.use('/product', bodyParser.json(), productRoutes)
