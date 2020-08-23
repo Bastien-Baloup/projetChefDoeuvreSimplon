@@ -7,6 +7,7 @@ import { useCart } from 'use-cart'
 const Card = ({ article, product, inCarousel }) => {
   const { addItem } = useCart()
   if (product) {
+    if (!product.objectID && product._id) product.objectID = product._id
     var name = product.name
     if (product.name.length > 50) {
       name = product.name.substr(0, 50) + '\u2026'
@@ -23,7 +24,7 @@ const Card = ({ article, product, inCarousel }) => {
     <div className={inCarousel ? 'card inCarousel' : 'card'}>
       {product && (
         <div className='product'>
-          <Link to={'/product/' + product.name} className='img'><img src={product.image} alt={'image du produit ' + product.name} /></Link>
+          <Link to={'/product/' + product.name} className='img'><img src={product.image || product.imgSrc} alt={'image du produit ' + product.name} /></Link>
           <Link to={'/product/' + product.name} title={product.name} className='name'>{name}</Link>
           {(product.sale !== 0) ? (
             <>

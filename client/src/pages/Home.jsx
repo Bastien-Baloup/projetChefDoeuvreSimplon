@@ -15,7 +15,7 @@ const Home = (props) => {
   const [newAndSales, setNewAndSales] = useState()
 
   useEffect(() => {
-    axios.get(apiUrl + '/article/last/10')
+    axios.get(apiUrl + '/article/last/15')
       .then(
         res => {
           setArticles(res.data)
@@ -23,7 +23,7 @@ const Home = (props) => {
         },
         error => setError(error)
       )
-    axios.get(apiUrl + '/get/newAndSales')
+    axios.get(apiUrl + '/product/last/15')
       .then(
         res => {
           setNewAndSales(res.data)

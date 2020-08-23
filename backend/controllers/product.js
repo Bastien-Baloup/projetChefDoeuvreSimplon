@@ -63,6 +63,17 @@ exports.getOneProductByName = (req, res, next) => {
     )
 }
 
+exports.getNLastProduct = (req, res, next) => {
+  Product.find().limit(parseInt(req.params.n)).sort('-date')
+    .then(products => res.status(200).json(products))
+    .catch(
+      error => {
+        res.status(400).json({ error: error })
+        console.log(error)
+      }
+    )
+}
+
 exports.modifyProduct = (req, res, next) => {
   const id = req.params.id
   const product = new Product({ ...req.body.product })

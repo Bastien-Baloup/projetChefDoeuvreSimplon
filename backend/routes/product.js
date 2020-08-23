@@ -9,6 +9,7 @@ router.post('/', adminAuth, productCtrl.createProduct)
 router.get('/', productCtrl.getAllProduct)
 router.get('/:id', productCtrl.getOneProduct)
 router.get('/byName/:name', productCtrl.getOneProductByName)
+router.get('/last/:n', productCtrl.getNLastProduct)
 router.put('/:id', adminAuth, productCtrl.modifyProduct)
 router.delete('/:id', adminAuth, productCtrl.deleteProduct)
 
