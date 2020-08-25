@@ -23,7 +23,7 @@ const errorHandler = error => {
 
 const server = http.createServer(app)
 
-const serverHttps = https.createServer({ key: fs.readFileSync('./server.key'), cert: fs.readFileSync('server.cert') }, app)
+const serverHttps = https.createServer({ key: fs.readFileSync('./privkey1.pem'), cert: fs.readFileSync('./cert1.pem') }, app)
   .listen(3080, () => {
     const address = serverHttps.address()
     const bind = typeof address === 'string' ? 'pipe ' + address : 'port 3080'

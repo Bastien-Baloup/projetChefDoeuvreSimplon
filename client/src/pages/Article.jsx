@@ -43,7 +43,7 @@ const Article = () => {
     content.push(<Spinner key='loading' />)
   }
   return (
-    <div className='articleWrapper'>
+    <div className='container'>
       {content}
     </div>
   )

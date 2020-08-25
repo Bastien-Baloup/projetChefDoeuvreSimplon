@@ -4,3 +4,5 @@ $black  : #302F32;
 $green  : #464F3E;
 $white  : #E9EcEd;
 $grey   : #CFD2D2;
+$disabled : lighten(desaturate($green, 50%), 25%);
+$red: #822;

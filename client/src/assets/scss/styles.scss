@@ -34,6 +34,16 @@ html{
       margin: 0;
     }
 
+    .accueil{
+      margin: 0 1rem;
+    }
+	.container{
+	  margin: 0 10%;
+	}
+	.container-5{
+	  margin: 0 5%
+	}
+
     .button{
       padding: .2rem;
       border: none;
@@ -49,6 +59,16 @@ html{
         box-shadow: 0 1px #666;
         transform: translate(0, 2px);
         transition: ease-out .1s;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $red;
+        fill: $red;
+        box-shadow: none;
+        &:active{
+          transform: none;
+          box-shadow: none;
+        }
       }
     }
 

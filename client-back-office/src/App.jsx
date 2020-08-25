@@ -17,7 +17,7 @@ import 'bulma/css/bulma.min.css'
 import 'bulma/css/bulma.css.map'
 import './spinner.css'
 
-window.localStorage.setItem('apiUrl', 'http://82.65.144.161:3030')
+window.localStorage.setItem('apiUrl', 'https://slicedice.ddns.net:3080')
 const apiUrl = window.localStorage.getItem('apiUrl')
 
 const App = () => {

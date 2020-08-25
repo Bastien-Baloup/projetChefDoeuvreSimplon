@@ -59,7 +59,7 @@ const Product = () => {
                   </>
                 )}
             </div>
-            <button className='button' onClick={() => addItem(product._id)}><FontAwesomeIcon icon={faShoppingCart} /> Ajouter au panier</button>
+            <button className='button' onClick={() => addItem(product._id, 1)} disabled={product.stock <1}><FontAwesomeIcon icon={faShoppingCart} />{product.stock > 0 ? ' Ajouter au panier' : ' Indisponible'} </button>
             <p className='stock label'>{product.stock} exemplaires en stock</p>
           </div>
         </div>

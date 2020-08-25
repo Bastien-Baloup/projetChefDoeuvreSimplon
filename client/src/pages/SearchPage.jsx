@@ -3,10 +3,10 @@ import Search from '../components/Search'
 
 const SearchPage = () => {
   return (
-    <>
-      <h2>SearchPage</h2>
+    <div className='container-5'>
+      <h2>Recherche</h2>
       <Search />
-    </>
+    </div>
   )
 }
 

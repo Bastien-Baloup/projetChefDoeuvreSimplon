@@ -11,7 +11,7 @@ const Cart = () => {
   }, [addedIds, quantityById])
 
   return (
-    <div className='cart'>
+    <div className='container'>
       <h2>Mon panier</h2>
       <CartList key={key} />
     </div>

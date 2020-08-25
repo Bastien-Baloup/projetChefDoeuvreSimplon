@@ -16,7 +16,7 @@ import Success from './pages/Success'
 import Error from './pages/Error'
 import NoMatch from './pages/NoMatch'
 
-window.localStorage.setItem('apiUrl', 'http://82.65.144.161:3030')
+window.localStorage.setItem('apiUrl', 'https://slicedice.ddns.net:3080')
 
 const App = () => {
   const loadCartFromStorage = () => {

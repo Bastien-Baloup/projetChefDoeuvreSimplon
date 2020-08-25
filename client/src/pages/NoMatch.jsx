@@ -2,7 +2,7 @@ import React from 'react'
 
 const NoMatch = () => {
   return (
-    <div className='404'>
+    <div className='404 container'>
       <h2>Erreur 404</h2>
       <p>Page non trouvée.</p>
     </div>

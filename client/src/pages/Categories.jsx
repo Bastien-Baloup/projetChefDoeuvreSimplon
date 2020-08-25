@@ -5,11 +5,10 @@ import Search from '../components/Search'
 const Categories = () => {
   var { categoryName } = useParams()
   return (
-    <>
-      <h2>Catégories</h2>
-      <h2>requested category {categoryName}</h2>
+    <div className='container-5'>
+      <h2>Catégorie : {categoryName}</h2>
       <Search category={categoryName} />
-    </>
+    </div>
   )
 }
 

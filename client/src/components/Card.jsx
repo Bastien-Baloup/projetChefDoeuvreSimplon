@@ -8,6 +8,7 @@ const Card = ({ article, product, inCarousel }) => {
   const { addItem } = useCart()
   if (product) {
     if (!product.objectID && product._id) product.objectID = product._id
+    if (!product.dispo && product.stock) product.dispo = (product.stock > 0)
     var name = product.name
     if (product.name.length > 50) {
       name = product.name.substr(0, 50) + '\u2026'
@@ -34,7 +35,7 @@ const Card = ({ article, product, inCarousel }) => {
           ) : (
             <p className='price'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(product.price)}</p>
           )}
-          <button className='button' onClick={() => addItem(product.objectID, 1)}><FontAwesomeIcon icon={faShoppingCart} /> Ajouter au panier</button>
+          <button className='button' onClick={() => addItem(product.objectID, 1)} disabled={!product.dispo}><FontAwesomeIcon icon={faShoppingCart} />{product.dispo ? 'Ajouter au panier' : 'indisponible'} </button>
         </div>
       )}
       {article && (

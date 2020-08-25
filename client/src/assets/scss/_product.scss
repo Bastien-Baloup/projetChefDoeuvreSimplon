@@ -44,7 +44,7 @@ body main > .productWrapper{
             margin-right: .5rem;
             font-size: .75rem;
             vertical-align: middle;
-            color: #822;
+            color: $red;
             background-color: #d444;
             @include responsive('md'){
               font-size: 1.1rem;

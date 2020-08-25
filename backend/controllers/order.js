@@ -169,8 +169,8 @@ exports.createCheckoutSession = (req, res) => {
         payment_method_types: ['card', 'bancontact', 'eps', 'giropay', 'ideal', 'p24'],
         line_items: lineItems,
         mode: 'payment',
-        success_url: 'http://82.65.144.161:3000/success/',
-        cancel_url: 'http://82.65.144.161:3000/cancel/',
+        success_url: 'https://slicedice.ddns.net:3000/success/',
+        cancel_url: 'https://slicedice.ddns.net:3000/cancel/',
         shipping_address_collection: {
           allowed_countries: ['FR', 'BE', 'GE', 'ES']
         },
@@ -226,7 +226,7 @@ exports.handleWebhook = (req, res, next) => {
         {
           client_email: paymentIntent.charges.data[0].billing_details.email,
           // eslint-disable-next-line
-          delivery_address: paymentIntent.shipping.name + ' \n' + line1 + ' \n' + line2 + ' \n' + postal_code + ' ' + city + ', ' + country,
+          delivery_address: paymentIntent.shipping.name + ', \n' + line1 + ' \n' + line2 + ' \n' + postal_code + ' ' + city + ', ' + country,
           products: products,
           price: paymentIntent.amount / 100,
           billId: paymentIntent.id,

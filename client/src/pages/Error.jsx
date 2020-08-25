@@ -2,7 +2,7 @@ import React from 'react'
 
 const Succes = () => {
   return (
-    <div>
+    <div className='container'>
       <p>Une érreur est survenue, veuillez réessayer plus tard.</p>
     </div>
   )

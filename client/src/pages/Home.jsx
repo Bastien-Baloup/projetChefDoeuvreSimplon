@@ -39,29 +39,40 @@ const Home = (props) => {
     var listNew = newAndSales.map(product => <Card product={product} key={product.id} onDragStart={handleOnDragStart} inCarousel />)
   }
   return (
-    <>
+    <div className='accueil'>
       <h2>Accueil</h2>
       {error
         ? (
           <div className='error'>Error: {error.message}</div>
         ) : (
-          isArtcilesLoaded
-            ? (
-              <Carousel items={listArticles} />
-            ) : (
-              <Spinner />
-            )
+          <>
+            <h3>Derniers Articles&nbsp;:</h3>
+            {
+              isArtcilesLoaded
+                ? (
+                  <Carousel items={listArticles} />
+                ) : (
+                  <Spinner />
+                )
+            }
+
+          </>
         )}
       {!error &&
         (
-          isNewLoaded
-            ? (
-              <Carousel items={listNew} />
-            ) : (
-              <Spinner />
-            )
+          <>
+            <h3>Derniers Jeux&nbsp;:</h3>
+            {
+              isNewLoaded
+                ? (
+                  <Carousel items={listNew} />
+                ) : (
+                  <Spinner />
+                )
+            }
+          </>
         )}
-    </>
+    </div>
   )
 }
 
