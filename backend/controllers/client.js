@@ -1,9 +1,8 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+require('dotenv').config('.env')
 
 const Client = require('../models/client')
-
-const notSoSecretKey = 'clientKey'
 
 exports.signup = (req, res, next) => {
   const _client = req.body.client
@@ -44,7 +43,7 @@ exports.login = (req, res, next) => {
               if (!valid) {
                 return res.status(401).json({ error: 'Mot de passe incorrect' })
               }
-              res.status(200).json({ token: jwt.sign({ clientId: client._id }, notSoSecretKey, { expiresIn: '4h' }) })
+              res.status(200).json({ token: jwt.sign({ clientId: client._id }, process.env.CLIENT_KEY, { expiresIn: '4h' }) })
             }
           )
           .catch(

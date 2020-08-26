@@ -44,10 +44,10 @@ const App = () => {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/actualites' component={News} />
-            <Route path='/categorie/:categoryName' component={Categories} />
+            <Route exact path='/categorie/:categoryName' component={Categories} />
             <Route path='/recherche' component={SearchPage} />
-            <Route path='/article/:title' component={Article} />
-            <Route path='/product/:name' component={Product} />
+            <Route exact path='/article/:title' component={Article} />
+            <Route exact path='/product/:name' component={Product} />
             <Route path='/panier' component={Cart} />
             <Route path='/success' component={Success} />
             <Route path='/error' component={Error} />

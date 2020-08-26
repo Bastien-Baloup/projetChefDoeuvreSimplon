@@ -1,11 +1,12 @@
 const Order = require('../models/order')
 const Product = require('../models/product')
+require('dotenv').config('.env')
 
 const algoliasearch = require('algoliasearch')
-const client = algoliasearch('H2YGA5NBNG', '26c633cd2792a5a165314b26bebf1e60')
+const client = algoliasearch(process.env.ALGOLIA_APPID, process.env.ALGOLIA_BACKENDAPI_KEY)
 const index = client.initIndex('dev_projetFinal')
 
-const stripe = require('stripe')('sk_test_51HIvljFICXrfazILw3pszg0X1jvbAXbqm5mymyjUChcoMOCpye2e4DBJSGjugafDTzRrOFDCa3YrEvrAghmNrqFD00tiYxBtIM')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 exports.createOrder = (req, res, next) => {
   var _order = req.body.order
@@ -129,6 +130,7 @@ exports.deleteOrder = (req, res, next) => {
 }
 
 exports.createCheckoutSession = (req, res) => {
+  console.log(stripe)
   const items = req.body.items
   var requests = []
   items.forEach(
@@ -169,8 +171,8 @@ exports.createCheckoutSession = (req, res) => {
         payment_method_types: ['card', 'bancontact', 'eps', 'giropay', 'ideal', 'p24'],
         line_items: lineItems,
         mode: 'payment',
-        success_url: 'https://slicedice.ddns.net:3000/success/',
-        cancel_url: 'https://slicedice.ddns.net:3000/cancel/',
+        success_url: process.env.SHOP_URL + '/success/',
+        cancel_url: process.env.SHOP_URL + '/cancel/',
         shipping_address_collection: {
           allowed_countries: ['FR', 'BE', 'GE', 'ES']
         },
@@ -198,7 +200,7 @@ exports.createCheckoutSession = (req, res) => {
 
 exports.handleWebhook = (req, res, next) => {
   console.log(req.body)
-  const endpointSecret = 'whsec_ybFhGOpOKmqr188ioKr9siIE3pPtG3fK'
+  const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET
   const sig = req.headers['stripe-signature']
 
   var event

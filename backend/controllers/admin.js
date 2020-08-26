@@ -1,9 +1,8 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+require('dotenv').config('.env')
 
 const Admin = require('../models/admins')
-
-const notSoSecretKey = 'YQRFPAwNVjVT7SczqkoTXWSDJKsnd1JtLpU29VSGpmEXAMuKyNbxFIu7rMTTzL6ARH0OaHKM8yJ5T86jDINapBMv8S9JZTmi9kQlwwO2jCfJIzlv3wvDtLYbWIGQIgql9qZR9QNNgUdPqoAClWgx35QEnPirE8PSP7xBLiGkUFdENGXH4GAk1dQzpHU4FcHYkT0jHjh9VpA6siomnK8R3KjOqEhznLQXArdZuv6in45xcqtD7QvejgYu4aMo7l8k'
 
 exports.signup = (req, res, next) => {
   const _admin = req.body.admin
@@ -44,7 +43,7 @@ exports.login = (req, res, next) => {
               if (!valid) {
                 return res.status(401).json({ error: 'Mot de passe incorrect' })
               }
-              res.status(200).json({ token: jwt.sign({ adminId: admin._id }, notSoSecretKey, { expiresIn: '2h' }) })
+              res.status(200).json({ token: jwt.sign({ adminId: admin._id }, process.env.ADMIN_KEY, { expiresIn: '2h' }) })
             }
           )
           .catch(

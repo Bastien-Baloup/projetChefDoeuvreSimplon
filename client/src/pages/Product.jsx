@@ -48,18 +48,42 @@ const Product = () => {
                   <>
                     <p className='label'>Prix initial: </p>
                     <p className='sale'>-{product.sale}&#37;</p>
-                    <p className='oldPrice'>&nbsp;{product.price}&euro;&nbsp;</p>
+                    <p className='oldPrice'>
+                      &nbsp;
+                      {
+                        new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' })
+                          .format(product.price)
+                      }
+                      &nbsp;
+                    </p>
                     <p className='label'>Prix réduit: </p>
-                    <p className='newPrice'>{newPrice}&euro;</p>
+                    <p className='newPrice'>
+                      {
+                        new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' })
+                          .format(newPrice)
+                      }
+                    </p>
                   </>
                 ) : (
                   <>
                     <p className='label'>Prix: </p>
-                    <p className='price'>{product.price}&euro;</p>
+                    <p className='price'>
+                      {
+                        new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' })
+                          .format(product.price)
+                      }
+                    </p>
                   </>
                 )}
             </div>
-            <button className='button' onClick={() => addItem(product._id, 1)} disabled={product.stock <1}><FontAwesomeIcon icon={faShoppingCart} />{product.stock > 0 ? ' Ajouter au panier' : ' Indisponible'} </button>
+            <button
+              className='button'
+              onClick={() => addItem(product._id, 1)}
+              disabled={product.stock < 1}
+            >
+              <FontAwesomeIcon icon={faShoppingCart} />
+              {product.stock > 0 ? ' Ajouter au panier' : ' Indisponible'}
+            </button>
             <p className='stock label'>{product.stock} exemplaires en stock</p>
           </div>
         </div>

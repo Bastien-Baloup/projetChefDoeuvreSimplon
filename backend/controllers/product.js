@@ -1,7 +1,8 @@
 const Product = require('../models/product')
+require('dotenv').config('.env')
 
 const algoliasearch = require('algoliasearch')
-const client = algoliasearch('H2YGA5NBNG', '26c633cd2792a5a165314b26bebf1e60')
+const client = algoliasearch(process.env.ALGOLIA_APPID, process.env.ALGOLIA_BACKENDAPI_KEY)
 const index = client.initIndex('dev_projetFinal')
 
 exports.createProduct = (req, res, next) => {

@@ -21,9 +21,19 @@ const Search = ({ category }) => {
         onSearchStateChange={onSearchStateChange}
         searchState={searchState}
       >
-        {category ? <Configure filters={'categories:"' + category + '"'} hitsPerPage={24} /> : <SearchBox />}
+        {
+          category
+            ? (
+              <Configure filters={'categories:"' + category + '"'} hitsPerPage={24} />
+            ) : (
+              <SearchBox />
+            )
+        }
         <div className='buttons'>
-          <button onClick={() => setIsModalOpen(true)}>Filtrer <FontAwesomeIcon icon={faSlidersH} /></button>
+          <button onClick={() => setIsModalOpen(true)}>
+            Filtrer&nbsp;
+            <FontAwesomeIcon icon={faSlidersH} />
+          </button>
           <SortBy
             items={[
               { value: 'dev_projetFinal', label: 'Nom' },

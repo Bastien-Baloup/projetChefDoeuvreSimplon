@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
 const express = require('express')
+
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const xss = require('xss-clean')
 const helmet = require('helmet')
+
 const app = express()
 
 const articleRoutes = require('./routes/article')
@@ -16,7 +18,9 @@ const clientRoutes = require('./routes/client')
 const checkoutRoutes = require('./routes/checkout')
 const webhookRoutes = require('./routes/webhook')
 
-mongoose.connect('mongodb+srv://projet-simplon-api:t5b5QH4S5gvUTvc@projet-simplon.0n4ye.mongodb.net/projet-simplon?retryWrites=true&w=majority',
+require('dotenv').config('.env')
+
+mongoose.connect('mongodb+' + process.env.DB_URL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true

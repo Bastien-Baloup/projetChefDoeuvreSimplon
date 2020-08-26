@@ -13,7 +13,6 @@ const Card = ({ article, product, inCarousel }) => {
     if (product.name.length > 50) {
       name = product.name.substr(0, 50) + '\u2026'
     }
-    product.id = Math.round(Math.random() * 10)
     if (product.sale) {
       var reducedPrice = product.price * (1 - (product.sale / 100))
     } else {
@@ -25,17 +24,43 @@ const Card = ({ article, product, inCarousel }) => {
     <div className={inCarousel ? 'card inCarousel' : 'card'}>
       {product && (
         <div className='product'>
-          <Link to={'/product/' + product.name} className='img'><img src={product.image || product.imgSrc} alt={'image du produit ' + product.name} /></Link>
-          <Link to={'/product/' + product.name} title={product.name} className='name'>{name}</Link>
+          <Link to={'/product/' + product.name} className='img'>
+            <img src={product.image || product.imgSrc} alt={'image du produit ' + product.name} />
+          </Link>
+          <Link to={'/product/' + product.name} title={product.name} className='name'>
+            {name}
+          </Link>
           {(product.sale !== 0) ? (
             <>
-              <p className='oldPrice'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(product.price)}</p>
-              <p className='price'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(reducedPrice)}</p>
+              <p className='oldPrice'>
+                {
+                  new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' })
+                    .format(product.price)
+                }
+              </p>
+              <p className='price'>
+                {
+                  new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' })
+                    .format(reducedPrice)
+                }
+              </p>
             </>
           ) : (
-            <p className='price'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(product.price)}</p>
+            <p className='price'>
+              {
+                new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' })
+                  .format(product.price)
+              }
+            </p>
           )}
-          <button className='button' onClick={() => addItem(product.objectID, 1)} disabled={!product.dispo}><FontAwesomeIcon icon={faShoppingCart} />{product.dispo ? 'Ajouter au panier' : 'indisponible'} </button>
+          <button 
+            className='button'
+            onClick={() => addItem(product.objectID, 1)}
+            disabled={!product.dispo}
+          >
+            <FontAwesomeIcon icon={faShoppingCart} />
+            {product.dispo ? 'Ajouter au panier' : 'indisponible'}
+          </button>
         </div>
       )}
       {article && (

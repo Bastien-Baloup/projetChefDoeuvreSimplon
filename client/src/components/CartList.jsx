@@ -69,73 +69,77 @@ const CartList = () => {
           <ul>
             {products.map(
               product => {
-                if (items.filter(item => item.sku === product._id)[0]) {
-                  var newPrice
-                  var totalProductPrice = product.price * items.filter(item => item.sku === product._id)[0].quantity
-                  if (product.sale !== 0) {
-                    newPrice = product.price - (product.price * product.sale / 100)
-                    totalProductPrice = newPrice * items.filter(item => item.sku === product._id)[0].quantity
+                if (product !== null) {
+                  if (items.filter(item => item.sku === product._id)[0]) {
+                    var newPrice
+                    var totalProductPrice = product.price * items.filter(item => item.sku === product._id)[0].quantity
+                    if (product.sale !== 0) {
+                      newPrice = product.price - (product.price * product.sale / 100)
+                      totalProductPrice = newPrice * items.filter(item => item.sku === product._id)[0].quantity
+                    }
+                    totalPrice += totalProductPrice
                   }
-                  totalPrice += totalProductPrice
+                  return (
+                    <li key={product._id} className='cart-content-item'>
+                      <div className='imgContainer'>
+                        <img src={product.imgSrc} alt='' />
+                      </div>
+                      <h3>{product.name}</h3>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Prix/u</th>
+                            <th>Qte.</th>
+                            <th>Prix</th>
+                            <th>&nbsp;</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p className='price'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(newPrice || product.price)}</p>
+                            </td>
+                            <td>
+                              <p className='count'>{items.filter(item => item.sku === product._id)[0] && items.filter(item => item.sku === product._id)[0].quantity}</p>
+                              <div className='button-count'>
+                                <button
+                                  className='button button-count-up'
+                                  onClick={() => {
+                                    if (items.filter(item => item.sku === product._id)[0].quantity < product.stock) {
+                                      addItem(product._id)
+                                    } else {
+                                      setError(new Error('Pas plus de stock disponible'))
+                                    }
+                                  }}
+                                >
+                                  <FontAwesomeIcon icon={faCaretUp} />
+                                </button>
+                                <button
+                                  className='button button-count-down'
+                                  onClick={() => {
+                                    removeItem(product._id)
+                                    setProducts([])
+                                  }}
+                                >
+                                  <FontAwesomeIcon icon={faCaretDown} />
+                                </button>
+                              </div>
+                            </td>
+                            <td>
+                              <p className='total'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalProductPrice)}</p>
+                            </td>
+                            <td>
+                              <button className='button button-remove' onClick={() => { removeLineItem(product._id); setProducts([]) }}><FontAwesomeIcon icon={faTimes} /></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <hr />
+                    </li>
+                  )
+                } else {
+                  clearCart()
                 }
-                return (
-                  <li key={product._id} className='cart-content-item'>
-                    <div className='imgContainer'>
-                      <img src={product.imgSrc} alt='' />
-                    </div>
-                    <h3>{product.name}</h3>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Prix/u</th>
-                          <th>Qte.</th>
-                          <th>Prix</th>
-                          <th>&nbsp;</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <p className='price'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(newPrice || product.price)}</p>
-                          </td>
-                          <td>
-                            <p className='count'>{items.filter(item => item.sku === product._id)[0] && items.filter(item => item.sku === product._id)[0].quantity}</p>
-                            <div className='button-count'>
-                              <button
-                                className='button button-count-up'
-                                onClick={() => {
-                                  if (items.filter(item => item.sku === product._id)[0].quantity < product.stock) {
-                                    addItem(product._id)
-                                  } else {
-                                    setError(new Error('Pas plus de stock disponible'))
-                                  }
-                                }}
-                              >
-                                <FontAwesomeIcon icon={faCaretUp} />
-                              </button>
-                              <button
-                                className='button button-count-down'
-                                onClick={() => {
-                                  removeItem(product._id)
-                                  setProducts([])
-                                }}
-                              >
-                                <FontAwesomeIcon icon={faCaretDown} />
-                              </button>
-                            </div>
-                          </td>
-                          <td>
-                            <p className='total'>{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalProductPrice)}</p>
-                          </td>
-                          <td>
-                            <button className='button button-remove' onClick={() => { removeLineItem(product._id); setProducts([]) }}><FontAwesomeIcon icon={faTimes} /></button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <hr />
-                  </li>
-                )
               }
             )}
             {items.length === 0 && <li key='emptyCart'>Votre panier est vide</li>}
