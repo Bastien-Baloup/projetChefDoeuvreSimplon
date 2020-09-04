@@ -1,0 +1,92 @@
+@import "mixins";
+@import "fonts";
+@import "variables";
+@import "../../../node_modules/react-alice-carousel/lib/scss/alice-carousel.scss";
+
+@import "header";
+@import "carousel";
+@import "search";
+@import "article";
+@import "product";
+@import "cart";
+
+html{
+  overflow-x: hidden;
+  
+  body{
+    overflow: hidden;
+    background-color: $white;
+    margin: 0;
+    p{
+      margin: 0;
+    }
+    a{
+      text-decoration: none;
+      color: $green;
+      &:visited{
+        color: $yellow;
+      }
+    }
+
+    ul{
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .accueil{
+      margin: 0 1rem;
+    }
+	.container{
+	  margin: 0 10%;
+	}
+	.container-5{
+	  margin: 0 5%
+	}
+
+    .button{
+      padding: .2rem;
+      border: none;
+      border-radius: .2rem;
+      outline: none;
+      background-color: $green;
+      color: $yellow;
+      fill: $yellow;
+      box-shadow: 0 3px #999;
+      overflow: hidden;
+      transition: ease-in .05s;
+      &:active{
+        box-shadow: 0 1px #666;
+        transform: translate(0, 2px);
+        transition: ease-out .1s;
+      }
+      &:disabled {
+        background-color: $disabled;
+        color: $red;
+        fill: $red;
+        box-shadow: none;
+        &:active{
+          transform: none;
+          box-shadow: none;
+        }
+      }
+    }
+
+
+    .spinnerWrapp{
+      margin: 0 auto;
+      width: 32px;
+      height: 32px;
+      .spinner{
+        width: 32px;
+        height: 32px;
+        animation: spin 1.5s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

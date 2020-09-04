@@ -1,0 +1,129 @@
+@import 'variables';
+@import 'mixins';
+
+body main > .productWrapper{
+  margin: 0 10%;
+  color: $black;
+  & > div {
+    .above {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+      border-bottom: solid 1px $grey;
+      @include responsive('md'){
+        margin-top: 1rem;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
+      .side{
+        width: 100%;
+        margin-left: 1rem;
+        h2{
+          font-size: 1.75rem;
+          @include responsive('md'){
+            font-size: 2.5rem;
+          }
+        }
+        .label {
+          font-size: .6rem;
+          @include responsive('md'){
+            font-size: 1rem;
+          }
+        }
+        .priceWrapper{
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          @include responsive('md'){
+            margin-bottom: .5rem;
+          }
+          .sale{
+            margin-left: auto;
+            margin-right: .5rem;
+            font-size: .75rem;
+            vertical-align: middle;
+            color: $red;
+            background-color: #d444;
+            @include responsive('md'){
+              font-size: 1.1rem;
+            }
+          }
+          .oldPrice{
+            text-decoration: line-through;
+            color: #666;
+            break-after: always;
+            @include responsive('md'){
+              font-size: 1.5rem;
+            }
+          }
+          .newPrice, .price{
+            margin-left: auto;
+            margin-right: .25rem;
+            font-size: 1.25rem;
+            @include responsive('md'){
+              font-size: 2.25rem;
+            }
+          }
+        }
+        button{
+          width: 100%;
+          @include responsive('md'){
+            width: 30%;
+            height: 2rem;
+            position: absolute;
+            right: 10%;
+          }
+        }
+        .stock {
+          margin-top: .5rem;
+          @include responsive('md'){
+            position: absolute;
+            right: 10%;
+            transform: translateY(130%);
+          }
+        }
+        
+      }
+      img {
+        max-height: 50vh;
+      }
+    }
+    .below{
+      display: flex;
+      flex-direction: column;
+      .label{
+        font-size: 1.4rem;
+      }
+      .description{
+        margin-top: .5rem;
+        margin-bottom: 1rem;
+        border-bottom: solid 1px $grey;
+      }
+      .infoComplement{
+        .categorie{
+          text-align: center;
+        }
+        .tags{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          li{
+            display: block;
+            margin: .5rem 0;
+            padding: .2rem;
+            border: none;
+            border-radius: .2rem;
+            outline: none;
+            background-color: $green;
+            color: $yellow;
+            fill: $yellow;
+            overflow: hidden;
+          }
+        }
+      }
+      
+    }
+  }
+}
